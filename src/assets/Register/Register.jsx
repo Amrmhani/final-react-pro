@@ -2,16 +2,28 @@
 import { Box, Container, TextField, Typography, Button } from "@mui/material";
 import { FormControlLabel, Checkbox ,Link } from "@mui/material";
 import Icon from "./Icon.png";
+import { useEffect } from "react";
 export default function Register() {
+
+    useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   return (
-    <Container maxWidth="sm">
+
+    <Container  sx={{mt:10, ml: "auto",
+    mr: 8, height:805 , width:448}}>
       <Box>
         <Typography component="h1" variant="h4">
           Create your account
         </Typography>
       </Box>
 
-      <Box sx={{ display: "flex", gap: 2 }}>
+      <Box component={'form'} sx={{ display: "flex", gap: 2 }}>
         <TextField
           label="First name"
           margin="normal"
@@ -24,7 +36,7 @@ export default function Register() {
           sx={{ flex: 1 }}
         />
       </Box>
-      <Box>
+      <Box component={'form'}>
         <TextField
         label="Email address"
         fullWidth
@@ -51,7 +63,15 @@ export default function Register() {
         margin="normal"
       />
       
+
 <FormControlLabel
+  sx={{
+    "& .MuiFormControlLabel-label": {
+      lineHeight: "21px",
+      letterSpacing: "0px",
+    },py:2
+  }}
+  
   control={<Checkbox />}
   label={
     <>
@@ -67,13 +87,18 @@ export default function Register() {
   }
 />
 
-       <Button type="submit" variant="contained" fullWidth sx={{height:50}} 
+
+       <Button type="submit" variant="contained" fullWidth sx={{height:50,gap:1}} 
        endIcon={
     <img src={Icon} alt="Icon" width="12" height="12" color="FFFFFF" />
   }>
         Create account
         
          </Button>
+
+         <Typography variant="register-1" sx={{mt:10, display:'block',textAlign:'center'}}>Already have an account? 
+            <Link>sign in</Link>
+         </Typography>
       </Box>
       
     </Container>
