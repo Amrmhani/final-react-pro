@@ -4,6 +4,7 @@ import { FormControlLabel, Checkbox, Link as MuiLink } from "@mui/material";
 import Icon from "./Icon.png";
 import { useEffect } from "react";
 import { Link as RouterLink } from "react-router";
+import { useForm } from "react-hook-form";
 export default function Register() {
 
     useEffect(() => {
@@ -13,6 +14,8 @@ export default function Register() {
             document.body.style.overflow = "";
         };
     }, []);
+
+    const {Register,handleSubmit} = useForm();
 
     return (
 
@@ -31,12 +34,14 @@ export default function Register() {
                     label="First name"
                     margin="normal"
                     sx={{ flex: 1 }}
+                    {...Register('fullName')}
                 />
 
                 <TextField
                     label="Last name"
                     margin="normal"
                     sx={{ flex: 1 }}
+                    {...Register('fullName')}
                 />
             </Box>
             <Box component={'form'}>
@@ -44,12 +49,14 @@ export default function Register() {
                     label="Email address"
                     fullWidth
                     margin="normal"
+                    {...Register('email')}
                 />
 
                 <TextField
                     label="Phone number"
                     fullWidth
                     margin="normal"
+                    {...Register('phoneNumber')}
                 />
 
                 <TextField
@@ -57,6 +64,7 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
+                    {...Register('password"')}
                 />
 
                 <TextField
@@ -64,6 +72,7 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
+                    {...Register('password"')}
                 />
 
 
@@ -104,6 +113,8 @@ export default function Register() {
                         Sign in
                     </RouterLink>
                 </Typography>
+
+   
             </Box>
 
         </Container>
