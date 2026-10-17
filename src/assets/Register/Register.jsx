@@ -1,8 +1,9 @@
 
 import { Box, Container, TextField, Typography, Button } from "@mui/material";
-import { FormControlLabel, Checkbox ,Link } from "@mui/material";
+import { FormControlLabel, Checkbox ,Link as MuiLink } from "@mui/material";
 import Icon from "./Icon.png";
 import { useEffect } from "react";
+import { Link as RouterLink } from "react-router";
 export default function Register() {
 
     useEffect(() => {
@@ -76,13 +77,13 @@ export default function Register() {
   label={
     <>
       I agree to the{" "}
-      <Link href="/terms" underline="hover">
+      <MuiLink href="/terms" underline="hover">
         Terms of Service
-      </Link>
+      </MuiLink>
       {" "}and{" "}
-      <Link href="/privacy" underline="hover">
+      <MuiLink href="/privacy" underline="hover">
         Privacy Policy
-      </Link>
+      </MuiLink>
     </>
   }
 />
@@ -97,7 +98,9 @@ export default function Register() {
          </Button>
 
          <Typography variant="register-1" sx={{mt:10, display:'block',textAlign:'center'}}>Already have an account? 
-            <Link>sign in</Link>
+            <RouterLink to="/login">
+    Sign in
+  </RouterLink>
          </Typography>
       </Box>
       
