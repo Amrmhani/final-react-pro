@@ -5,6 +5,10 @@ import Icon from "./Icon.png";
 import { useEffect } from "react";
 import { Link as RouterLink } from "react-router";
 import { useForm } from "react-hook-form";
+
+import { yupResolver } from "@hookform/resolvers/yup"
+import { registerSchema } from "../../validations/authSchemas";
+
 export default function Register() {
 
     useEffect(() => {
@@ -15,7 +19,9 @@ export default function Register() {
         };
     }, []);
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm({
+    resolver: yupResolver(registerSchema),mode:"onBlure"
+  })
 
     return (
 

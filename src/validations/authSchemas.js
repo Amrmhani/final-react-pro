@@ -1,6 +1,6 @@
 import * as yup from "yup"
 
-export const registerSchema = yub.object({
+export const registerSchema = yup.object({
     fullName:yup.string().required("Full Name is required")
     .min(3,"Full Name must be at latest 3 char"),
     userName:yup.string().required("User Name is required")
@@ -15,7 +15,7 @@ export const registerSchema = yub.object({
     .matches(/^05\d{8}$/,"Phone number start with 05 and must be 10 digits")
 })
 
-export const loginrSchema = yub.object({
+export const loginrSchema = yup.object({
     email:yup.string().required("Email is required").email("Invalid Email Format"),
     password:yup.string().required("Password is required")
     .min(6,"Password must be at least 6 char")
