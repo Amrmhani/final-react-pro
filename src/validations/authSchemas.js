@@ -14,3 +14,13 @@ export const registerSchema = yub.object({
     phoneNumber:yup.string().required("phon Number is required")
     .matches(/^05\d{8}$/,"Phone number start with 05 and must be 10 digits")
 })
+
+export const loginrSchema = yub.object({
+    email:yup.string().required("Email is required").email("Invalid Email Format"),
+    password:yup.string().required("Password is required")
+    .min(6,"Password must be at least 6 char")
+    .matches(/[A-Z]/,"Password must contain an uppercase letter")
+    .matches(/[a-z]/,"Password must contain an lowercase letter")
+    .matches(/[0-9]/,"Password must contain a number")
+})
+
