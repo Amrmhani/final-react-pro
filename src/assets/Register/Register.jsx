@@ -15,7 +15,7 @@ export default function Register() {
         };
     }, []);
 
-    const {Register,handleSubmit} = useForm();
+    const { register, handleSubmit } = useForm();
 
     return (
 
@@ -29,34 +29,33 @@ export default function Register() {
                 </Typography>
             </Box>
 
-            <Box component={'form'} sx={{ display: "flex", gap: 2 }}>
-                <TextField
-                    label="First name"
-                    margin="normal"
-                    sx={{ flex: 1 }}
-                    {...Register('fullName')}
-                />
 
-                <TextField
-                    label="Last name"
-                    margin="normal"
-                    sx={{ flex: 1 }}
-                    {...Register('fullName')}
-                />
-            </Box>
             <Box component={'form'}>
+                <TextField
+                label="FullName"
+                fullWidth
+                margin="normal"
+                {...register('fullName')}
+            />
+
+            <TextField
+                label="User Name"
+                fullWidth
+                margin="normal"
+                {...register('userName')}
+            />
                 <TextField
                     label="Email address"
                     fullWidth
                     margin="normal"
-                    {...Register('email')}
+                    {...register('email')}
                 />
 
                 <TextField
                     label="Phone number"
                     fullWidth
                     margin="normal"
-                    {...Register('phoneNumber')}
+                    {...register('phoneNumber')}
                 />
 
                 <TextField
@@ -64,7 +63,7 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
-                    {...Register('password"')}
+                    {...register('password"')}
                 />
 
                 <TextField
@@ -72,7 +71,7 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
-                    {...Register('password"')}
+                    {...register("confirmPassword")}
                 />
 
 
@@ -108,13 +107,13 @@ export default function Register() {
 
                 </Button>
 
-                <Typography variant="register-1" sx={{ mt: 10, display: 'block', textAlign: 'center' }}>Already have an account?
+                <Typography variant="register-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Already have an account?
                     <RouterLink to="/login">
                         Sign in
                     </RouterLink>
                 </Typography>
 
-   
+
             </Box>
 
         </Container>
