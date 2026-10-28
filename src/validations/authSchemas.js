@@ -18,7 +18,7 @@ export const registerSchema = yup.object({
         .matches(/^05\d{8}$/, "Phone number start with 05 and must be 10 digits")
 })
 
-export const loginrSchema = yup.object({
+export const loginSchema = yup.object({
     email: yup.string().required("Email is required").email("Invalid Email Format"),
     password: yup.string().required("Password is required")
         .min(6, "Password must be at least 6 char")
