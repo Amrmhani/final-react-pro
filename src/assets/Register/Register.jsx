@@ -23,7 +23,7 @@ export default function Register() {
     const [serverError, setServerError] = useState(null);
     const [succes, setucces] = useState(false);
 
-    const { register, handleSubmit,formState:{errors} } = useForm({
+    const { register, handleSubmit,formState:{errors,isSubmitting} } = useForm({
         resolver: yupResolver(registerSchema), mode: "onBlur"
     })
     const onSubmit = async (data) => {
@@ -138,9 +138,11 @@ export default function Register() {
                 <Button type="submit" variant="contained" fullWidth sx={{ height: 50, gap: 1 }}
                     endIcon={
                         <img src={Icon} alt="Icon" width="12" height="12" />
-                    }>
+                    }
+                    disabled={isSubmitting}
+                    >
                     Create account
-
+                    {isSubmitting?"Loading...":"Register"}
                 </Button>
 
                 <Typography variant="register-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Already have an account?
