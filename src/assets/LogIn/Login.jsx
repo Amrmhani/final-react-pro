@@ -40,5 +40,40 @@ export default function Register() {
 
 
 
-  return
+   return (
+  
+          <Container sx={{
+              mt: 10, ml: "auto",
+              mr: 8, height: 805, width: 448
+          }}>
+              <Box>
+                  <Typography component="h1" variant="h4">
+                      Create your account
+                  </Typography>
+              </Box>
+  
+  
+              <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
+                  
+                  <TextField
+                      label="Email address"
+                      fullWidth
+                      margin="normal"
+                      
+                  />
+  
+                  <TextField
+                      label="Password"
+                      type="password"
+                      fullWidth
+                      margin="normal"
+                      
+                  />
+
+  
+  
+              </Box>
+  
+          </Container>
+      );
 }
