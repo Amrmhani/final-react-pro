@@ -23,7 +23,7 @@ export default function Register() {
     const [serverError, setServerError] = useState(null);
     const [succes, setucces] = useState(false);
 
-    const { register, handleSubmit,formState:{errors,isSubmitting} } = useForm({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(registerSchema), mode: "onBlur"
     })
     const onSubmit = async (data) => {
@@ -38,7 +38,7 @@ export default function Register() {
         }
     }
 
-    
+
 
     return (
 
@@ -52,7 +52,7 @@ export default function Register() {
                 </Typography>
             </Box>
 
-          {serverError?<Alert severity="error">{serverError}</Alert>:null}
+            {serverError ? <Alert severity="error">{serverError}</Alert> : null}
 
             <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
@@ -140,9 +140,9 @@ export default function Register() {
                         <img src={Icon} alt="Icon" width="12" height="12" />
                     }
                     disabled={isSubmitting}
-                    >
+                >
                     Create account
-                    {isSubmitting?"Loading...":"Register"}
+                    {isSubmitting ? "Loading..." : "Register"}
                 </Button>
 
                 <Typography variant="register-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Already have an account?
