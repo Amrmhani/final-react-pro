@@ -141,7 +141,6 @@ export default function Register() {
                     }
                     disabled={isSubmitting}
                 >
-                    Create account
                     {isSubmitting ? "Loading..." : "Register"}
                 </Button>
 

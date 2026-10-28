@@ -52,6 +52,7 @@ export default function Register() {
                 </Typography>
             </Box>
 
+            {serverError ? <Alert severity="error">{serverError}</Alert> : null}
 
             <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
 
@@ -60,6 +61,8 @@ export default function Register() {
                     fullWidth
                     margin="normal"
                     {...register('email')}
+                    error={errors.email}
+                    helperText={errors.email?.message}
 
                 />
 
@@ -69,6 +72,8 @@ export default function Register() {
                     fullWidth
                     margin="normal"
                     {...register("password")}
+                    error={errors.password}
+                    helperText={errors.password?.message}
 
                 />
 
@@ -82,11 +87,13 @@ export default function Register() {
                     }
                     disabled={isSubmitting}
                 >
-                     Sign in
-
                     {isSubmitting ? "Loading..." : "Login"}
                 </Button>
-
+                <Typography variant="Login-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Don't have ac account?
+                    <RouterLink to="/register">
+                     Create one
+                    </RouterLink>
+                </Typography>
 
             </Box>
 
