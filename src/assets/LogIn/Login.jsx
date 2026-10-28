@@ -59,6 +59,7 @@ export default function Register() {
                       label="Email address"
                       fullWidth
                       margin="normal"
+                      {...register('email')}
                       
                   />
   
@@ -67,6 +68,7 @@ export default function Register() {
                       type="password"
                       fullWidth
                       margin="normal"
+                      {...register("password")}
                       
                   />
 
