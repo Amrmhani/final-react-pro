@@ -40,42 +40,56 @@ export default function Register() {
 
 
 
-   return (
-  
-          <Container sx={{
-              mt: 10, ml: "auto",
-              mr: 8, height: 805, width: 448
-          }}>
-              <Box>
-                  <Typography component="h1" variant="h4">
-                      Create your account
-                  </Typography>
-              </Box>
-  
-  
-              <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
-                  
-                  <TextField
-                      label="Email address"
-                      fullWidth
-                      margin="normal"
-                      {...register('email')}
-                      
-                  />
-  
-                  <TextField
-                      label="Password"
-                      type="password"
-                      fullWidth
-                      margin="normal"
-                      {...register("password")}
-                      
-                  />
+    return (
 
-  
-  
-              </Box>
-  
-          </Container>
-      );
+        <Container sx={{
+            mt: 10, ml: "auto",
+            mr: 8, height: 805, width: 448
+        }}>
+            <Box>
+                <Typography component="h1" variant="h4">
+                    Create your account
+                </Typography>
+            </Box>
+
+
+            <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
+
+                <TextField
+                    label="Email address"
+                    fullWidth
+                    margin="normal"
+                    {...register('email')}
+
+                />
+
+                <TextField
+                    label="Password"
+                    type="password"
+                    fullWidth
+                    margin="normal"
+                    {...register("password")}
+
+                />
+
+                <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    sx={{ height: 50, gap: 1 }}
+                    endIcon={
+                        <img src={Icon} alt="Icon" width="12" height="12" />
+                    }
+                    disabled={isSubmitting}
+                >
+                     Sign in
+
+                    {isSubmitting ? "Loading..." : "Login"}
+                </Button>
+
+
+            </Box>
+
+        </Container>
+    );
 }
