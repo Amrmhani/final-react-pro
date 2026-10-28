@@ -105,9 +105,9 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
-                    {...register("Password")}
-                    error={errors.password}
-                    helperText={errors.password?.message}
+                    {...register("confirmPassword")}
+                    error={errors.confirmPassword}
+                    helperText={errors.confirmPassword?.message}
                 />
 
 
