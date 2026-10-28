@@ -46,9 +46,9 @@ export default function Register() {
             mt: 10, ml: "auto",
             mr: 8, height: 805, width: 448
         }}>
-            <Box>
+            <Box sx={{mb:5}}>
                 <Typography component="h1" variant="h4">
-                    Create your account
+                Welcome back
                 </Typography>
             </Box>
 
@@ -59,18 +59,21 @@ export default function Register() {
                 <TextField
                     label="Email address"
                     fullWidth
-                    margin="normal"
                     {...register('email')}
                     error={errors.email}
                     helperText={errors.email?.message}
 
                 />
+                <Box sx={{display:"flex",justifyContent:"flex-end",mt:7,mb:1}}  >
+                  <RouterLink to={"/forgotpassword"} style={{color:"#4E45D5",textDecoration:"none"}}>
+                      Forgot password?
 
+                  </RouterLink>
+                </Box>
                 <TextField
                     label="Password"
                     type="password"
                     fullWidth
-                    margin="normal"
                     {...register("password")}
                     error={errors.password}
                     helperText={errors.password?.message}
@@ -81,7 +84,7 @@ export default function Register() {
                     type="submit"
                     variant="contained"
                     fullWidth
-                    sx={{ height: 50, gap: 1 }}
+                    sx={{ height: 50, gap: 1,mt:5 }}
                     endIcon={
                         <img src={Icon} alt="Icon" width="12" height="12" />
                     }

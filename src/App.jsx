@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
  import Login from "./assets/LogIn/Login";
 import Register from "./assets/Register/Register";
+import ForgotPassword from "./assets/forgotPassword/ForgotPassword";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
 
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
     </BrowserRouter>
   );
