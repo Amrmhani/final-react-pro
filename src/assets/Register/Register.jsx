@@ -1,13 +1,14 @@
 
-import { Box, Container, TextField, Typography, Button } from "@mui/material";
+import { Box, Container, TextField, Typography, Button, Alert } from "@mui/material";
 import { FormControlLabel, Checkbox, Link as MuiLink } from "@mui/material";
 import Icon from "./Icon.png";
-import { useEffect } from "react";
-import { Link as RouterLink } from "react-router";
+import { useEffect, useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 
 import { yupResolver } from "@hookform/resolvers/yup"
 import { registerSchema } from "../../validations/authSchemas";
+import axios from "axios";
 
 export default function Register() {
 
@@ -18,10 +19,26 @@ export default function Register() {
             document.body.style.overflow = "";
         };
     }, []);
+    const navigate = useNavigate();
+    const [serverError, setServerError] = useState(null);
+    const [succes, setucces] = useState(false);
 
-    const { register, handleSubmit } = useForm({
-    resolver: yupResolver(registerSchema),mode:"onBlure"
-  })
+    const { register, handleSubmit,formState:{errors} } = useForm({
+        resolver: yupResolver(registerSchema), mode: "onBlur"
+    })
+    const onSubmit = async (data) => {
+        console.log(data);
+        try {
+            const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/Register', data)
+            setucces(true);
+            navigate('/login');
+        } catch (err) {
+            console.log(err.response);
+            setServerError("Registeration Failed");
+        }
+    }
+
+    
 
     return (
 
@@ -35,26 +52,33 @@ export default function Register() {
                 </Typography>
             </Box>
 
+          {serverError?<Alert severity="error">{serverError}</Alert>:null}
 
-            <Box component={'form'}>
+            <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
                 <TextField
-                label="FullName"
-                fullWidth
-                margin="normal"
-                {...register('fullName')}
-            />
+                    label="FullName"
+                    fullWidth
+                    margin="normal"
+                    {...register('fullName')}
+                    error={errors.fullName}
+                    helperText={errors.fullName?.message}
+                />
 
-            <TextField
-                label="User Name"
-                fullWidth
-                margin="normal"
-                {...register('userName')}
-            />
+                <TextField
+                    label="User Name"
+                    fullWidth
+                    margin="normal"
+                    {...register('userName')}
+                    error={errors.userName}
+                    helperText={errors.userName?.message}
+                />
                 <TextField
                     label="Email address"
                     fullWidth
                     margin="normal"
                     {...register('email')}
+                    error={errors.email}
+                    helperText={errors.email?.message}
                 />
 
                 <TextField
@@ -62,6 +86,8 @@ export default function Register() {
                     fullWidth
                     margin="normal"
                     {...register('phoneNumber')}
+                    error={errors.phoneNumber}
+                    helperText={errors.phoneNumber?.message}
                 />
 
                 <TextField
@@ -69,7 +95,9 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
-                    {...register('password"')}
+                    {...register("password")}
+                    error={errors.password}
+                    helperText={errors.password?.message}
                 />
 
                 <TextField
@@ -77,7 +105,9 @@ export default function Register() {
                     type="password"
                     fullWidth
                     margin="normal"
-                    {...register("confirmPassword")}
+                    {...register("Password")}
+                    error={errors.password}
+                    helperText={errors.password?.message}
                 />
 
 
@@ -107,7 +137,7 @@ export default function Register() {
 
                 <Button type="submit" variant="contained" fullWidth sx={{ height: 50, gap: 1 }}
                     endIcon={
-                        <img src={Icon} alt="Icon" width="12" height="12" color="FFFFFF" />
+                        <img src={Icon} alt="Icon" width="12" height="12" />
                     }>
                     Create account
 
