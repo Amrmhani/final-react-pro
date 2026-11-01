@@ -1,23 +1,12 @@
-import Home from "./assets/Home/Home";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
- import Login from "./assets/LogIn/Login";
-import Register from "./assets/Register/Register";
-import ForgotPassword from "./assets/forgotPassword/ForgotPassword";
+import react from 'react';
+import { RouterProvider } from 'react-router-dom';
+import router from './router';
 
+export default function App(){
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />
-        <Route path="/home" element={<Home />} />
-
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return(
+    <>
+    <RouterProvider router={router}/>
+    </>
+  )
 }
-
-export default App;
