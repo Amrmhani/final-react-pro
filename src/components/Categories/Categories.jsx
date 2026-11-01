@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+import { Box, Chip, CircularProgress, Typography } from "@mui/material";
 import axios from "axios"
 import react, { useEffect, useState } from "react"
 
@@ -35,12 +35,16 @@ export default function Categories() {
     if(error) return <CircularProgress />
 
     return (
-        <div>
-            <h2>Categories</h2>
-            {categories.map((category) => (
-                <p>{category.name}</p>
+        <Box>
+            <Typography variant="h5" component={'h2'} sx={{mb:2}}>Categories</Typography>
+            <Box sx={{display:"flex" ,gap:1,flexWrap:'wrap'}}>
+                {categories.map((category) => (
+                
+                <Chip label={category.name} clickable/>
             ))}
-        </div>
+            </Box>
+            
+        </Box>
 
     )
 }
