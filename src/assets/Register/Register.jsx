@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { registerSchema } from "../../validations/authSchemas";
 import axios from "axios";
+import "./register.css";
 
 export default function Register() {
 
@@ -47,7 +48,7 @@ export default function Register() {
             mr: 8, height: 805, width: 448
         }}>
             <Box>
-                <Typography component="h1" variant="h4">
+                <Typography className="plus-jakarta-register">
                     Create your account
                 </Typography>
             </Box>

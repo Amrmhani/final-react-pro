@@ -1,6 +1,5 @@
 
 import { Box, Container, TextField, Typography, Button, Alert } from "@mui/material";
-import { FormControlLabel, Checkbox, Link as MuiLink } from "@mui/material";
 import Icon from "./Icon.png";
 import { useEffect, useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router";
@@ -9,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchema } from "../../validations/authSchemas";
 import axios from "axios";
-
+import "./Login.css";
 export default function Register() {
 
     useEffect(() => {
@@ -43,12 +42,15 @@ export default function Register() {
     return (
 
         <Container sx={{
-            mt: 10, ml: "auto",
+
             mr: 8, height: 805, width: 448
         }}>
-            <Box sx={{mb:5}}>
-                <Typography component="h1" variant="h4">
-                Welcome back
+            <Box sx={{ mb: 5, mt: 10, ml: "auto" }}>
+                <Typography className="plus-jakarta-login">
+                    Welcome back
+                </Typography>
+                <Typography className=".Inter-login">
+                    Sign in to your account
                 </Typography>
             </Box>
 
@@ -64,11 +66,11 @@ export default function Register() {
                     helperText={errors.email?.message}
 
                 />
-                <Box sx={{display:"flex",justifyContent:"flex-end",mt:7,mb:1}}  >
-                  <RouterLink to={"/forgotpassword"} style={{color:"#4E45D5",textDecoration:"none"}}>
-                      Forgot password?
+                <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 7, mb: 1 }}  >
+                    <RouterLink to={"/forgotpassword"} style={{ color: "#4E45D5", textDecoration: "none" }}>
+                        Forgot password?
 
-                  </RouterLink>
+                    </RouterLink>
                 </Box>
                 <TextField
                     label="Password"
@@ -84,7 +86,7 @@ export default function Register() {
                     type="submit"
                     variant="contained"
                     fullWidth
-                    sx={{ height: 50, gap: 1,mt:5 }}
+                    sx={{ height: 50, gap: 1, mt: 5 }}
                     endIcon={
                         <img src={Icon} alt="Icon" width="12" height="12" />
                     }
@@ -94,12 +96,14 @@ export default function Register() {
                 </Button>
                 <Typography variant="Login-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Don't have ac account?
                     <RouterLink to="/register">
-                     Create one
+                        Create one
                     </RouterLink>
                 </Typography>
 
             </Box>
 
+           
         </Container>
+
     );
 }

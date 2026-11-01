@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.plus-jakarta-login {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 40px !important;
+  line-height: 48px;
+  letter-spacing: -1px;
+  color: #131b2e;
+  text-align: left;
+}
+.Inter-login{
+font-family: "Inter", sans-serif;
+font-weight: 400;
+  font-size: 15px !important;
+  line-height: 14px;
+  letter-spacing: 0px;
+  color: #47464F;
+  text-align: left;
+}

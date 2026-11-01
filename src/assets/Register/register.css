@@ -1,4 +1,12 @@
-html,
-body {
-  overflow-y: hidden;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.plus-jakarta-register {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 40px !important;
+  line-height: 48px;
+  letter-spacing: -1px;
+  color: #131b2e;
+  text-align: left;
 }
