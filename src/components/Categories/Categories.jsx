@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 
 import { useCategories } from "../../hooks/UseCategories";
+import Categoryitem from "./Categoryitem";
 
 export default function Categories() {
   const { data, isPending, isError } = useCategories();
@@ -36,11 +37,8 @@ export default function Categories() {
 
       <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
         {data?.map((category) => (
-          <Chip
-            key={category.id}
-            label={category.name}
-            clickable
-          />
+            
+          <Categoryitem category={category}     key={category.id}/>
         ))}
       </Box>
     </Box>
