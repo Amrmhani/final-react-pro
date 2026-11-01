@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-export const useCategories = () => {
+export const useCategories = (id) => {
   const getCategories = async () => {
     const response = await axios.get(
       `https://knowledgeshop.runasp.net/api/Categories`,

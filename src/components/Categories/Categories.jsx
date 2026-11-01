@@ -35,7 +35,15 @@ export default function Categories() {
         Categories
       </Typography>
 
-      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+      <Box sx={{ display: "grid", gap: 2,
+        gridTemplateColumns:{
+            xs:"repeat(2,1fr)",
+            sm:"repeat(3,1fr)",
+            md:"repeat(4,1fr)",
+        
+
+        }
+       }}>
         {data?.map((category) => (
             
           <Categoryitem category={category}     key={category.id}/>
