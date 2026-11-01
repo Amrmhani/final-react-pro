@@ -1,34 +1,48 @@
-import { Alert, Box, Chip, CircularProgress, Typography } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios"
-import react, { useEffect, useState } from "react"
+
+import {
+  Alert,
+  Box,
+  Chip,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
+
+import { useCategories } from "../../hooks/UseCategories";
 
 export default function Categories() {
+  const { data, isPending, isError } = useCategories();
 
-   const getCategories = async()=>{
-    const response = await axios.get('https://knowledgeshop.runasp.net/api/Categories',
-        {headers:{'Accept-Language':"en"}})
-    console.log(response.data.response.data)
-    return response.data.response.data
-   }
-   const[data,isLoading,isError] = useQuery({
-    queryKey:["Categories"],
-    queryFn:getCategories,
-    staleTime:1000 * 60 * 60 * 24 * 3
-   });
- if(isLoading) return <CircularProgress />
- if (isError) return <Alert severity="error">{error}.</Alert>
+  if (isPending) {
+    return <CircularProgress />;
+  }
+
+  if (isError) {
     return (
-        <Box>
-            <Typography variant="h5" component={'h2'} sx={{mb:2}}>Categories</Typography>
-            <Box sx={{display:"flex" ,gap:1,flexWrap:'wrap'}}>
-                {categories.map((category) => (
-                
-                <Chip label={category.name} clickable/>
-            ))}
-            </Box>
-            
-        </Box>
+      <Alert severity="error">
+        Failed to load categories.
+      </Alert>
+    );
+  }
 
-    )
+  return (
+    <Box>
+      <Typography
+        variant="h5"
+        component="h2"
+        sx={{ mb: 2 }}
+      >
+        Categories
+      </Typography>
+
+      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+        {data?.map((category) => (
+          <Chip
+            key={category.id}
+            label={category.name}
+            clickable
+          />
+        ))}
+      </Box>
+    </Box>
+  );
 }
