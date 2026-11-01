@@ -6,8 +6,12 @@ export default function Categories(){
     const [categories , setCategories]=useState([]);
 
     const getCategories = async ()=>{
-        const response = await axios.get(`https://knowledgeshop.runasp.net/api/Categories`);
-        console.log(response.data.response.data);
+        const response = await axios.get(`https://knowledgeshop.runasp.net/api/Categories`
+        ,{headers:{
+            "Accept-Language":"en"
+        }}
+        );
+         console.log(response.data.response.data);
     }
     useEffect(()=>{
         getCategories();
