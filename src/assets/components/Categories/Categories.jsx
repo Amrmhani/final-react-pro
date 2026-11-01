@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import axios from "axios"
 import react, { useEffect, useState } from "react"
 
@@ -29,6 +30,9 @@ export default function Categories() {
     useEffect(() => {
         getCategories();
     }, [])
+
+    if(isloading) return <CircularProgress />
+    if(error) return <CircularProgress />
 
     return (
         <div>
