@@ -82,6 +82,7 @@ export default function Register() {
                 />
 
                 <Button
+                className="primary-color"
                     type="submit"
                     variant="contained"
                     fullWidth
