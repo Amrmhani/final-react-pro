@@ -1,9 +1,12 @@
-import { Box } from '@mui/material';
+import { AppBar, Box, Toolbar } from '@mui/material';
 import react from 'react';
 
 export default function Navbar(){
     return(
-        <Box>Navbar</Box>
+       <AppBar position="static">
+        <Toolbar>
 
+        </Toolbar>
+       </AppBar>
     )
 }

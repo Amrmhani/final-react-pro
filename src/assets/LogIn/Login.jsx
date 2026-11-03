@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchema } from "../../validations/authSchemas";
 import axios from "axios";
-import "./Login.css";
 export default function Register() {
 
     useEffect(() => {
@@ -46,7 +45,7 @@ export default function Register() {
             mr: 8, height: 805, width: 448
         }}>
             <Box sx={{ mb: 5, mt: 10, ml: "auto" }}>
-                <Typography className="plus-jakarta-login">
+                <Typography className="font-Primary" sx={{fontSize:40 }}>
                     Welcome back
                 </Typography>
                 <Typography className=".Inter-login">
