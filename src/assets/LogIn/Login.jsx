@@ -9,6 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchema } from "../../validations/authSchemas";
 import axios from "axios";
 import CustomButton from "../../components/UI/Button/Button";
+import LoginSidePanel from "../../components/LoginSidePanel/LoginSidePanel";
+
 export default function Register() {
 
     useEffect(() => {
@@ -39,71 +41,140 @@ export default function Register() {
 
 
 
-    return (
+return (
+    <Box
+        sx={{
+            minHeight: "100vh",
+            width: "100%",
+            display: "flex",
+        }}
+    >
+        <Box
+            sx={{
+                width: "50%",
+                minHeight: "100vh",
+                display: { xs: "none", md: "block" },
+            }}
+        >
+            <LoginSidePanel/>
+        </Box>
 
-        <Container sx={{
+        <Box
+            sx={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                px: { xs: 2, md: 4 },
+                py: 4,
+            }}
+        >
+            <Container
+                maxWidth={false}
+                sx={{
+                    width: "100%",
+                    maxWidth: 448,
+                    p: 0,
+                    m: 0,
+                }}
+            >
+                <Box sx={{ mb: 5 }}>
+                    <Typography
+                        className="font-Primary"
+                        sx={{ fontSize: 40 }}
+                    >
+                        Welcome back
+                    </Typography>
 
-            mr: 8, height: 805, width: 448
-        }}>
-            <Box sx={{ mb: 5, mt: 10, ml: "auto" }}>
-                <Typography className="font-Primary" sx={{ fontSize: 40 }}>
-                    Welcome back
-                </Typography>
-                <Typography className=".Inter-login">
-                    Sign in to your account
-                </Typography>
-            </Box>
-
-            {serverError ? <Alert severity="error">{serverError}</Alert> : null}
-
-            <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
-
-                <TextField
-                    label="Email address"
-                    fullWidth
-                    {...register('email')}
-                    error={errors.email}
-                    helperText={errors.email?.message}
-
-                />
-                <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 7, mb: 1 }}  >
-                    <RouterLink to={"/forgotpassword"} style={{ color: "#4E45D5", textDecoration: "none" }}>
-                        Forgot password?
-
-                    </RouterLink>
+                    <Typography className=".Inter-login">
+                        Sign in to your account
+                    </Typography>
                 </Box>
-                <TextField
-                    label="Password"
-                    type="password"
-                    fullWidth
-                    {...register("password")}
-                    error={errors.password}
-                    helperText={errors.password?.message}
 
-                />
+                {serverError && (
+                    <Alert severity="error" sx={{ mb: 2 }}>
+                        {serverError}
+                    </Alert>
+                )}
 
-                <CustomButton
-                    type="submit"
-                    fullWidth
-                    sx={{ height: 50, gap: 1, mt: 5 }}
-                    endIcon={
-                        <img src={Icon} alt="Icon" width="12" height="12" />
-                    }
-                    disabled={isSubmitting}
+                <Box
+                    component="form"
+                    onSubmit={handleSubmit(onSubmit)}
                 >
-                    {isSubmitting ? "Loading..." : "Login"}
-                </CustomButton>
+                    <TextField
+                        label="Email address"
+                        fullWidth
+                        {...register("email")}
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
+                    />
 
-                <Typography variant="Login-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Don't have ac account?
-                    <RouterLink to="/register">
-                        Create one
-                    </RouterLink>
-                </Typography>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            mt: 7,
+                            mb: 1,
+                        }}
+                    >
+                        <RouterLink
+                            to="/forgotpassword"
+                            style={{
+                                color: "#4E45D5",
+                                textDecoration: "none",
+                            }}
+                        >
+                            Forgot password?
+                        </RouterLink>
+                    </Box>
 
-            </Box>
+                    <TextField
+                        label="Password"
+                        type="password"
+                        fullWidth
+                        {...register("password")}
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
+                    />
 
+                    <CustomButton
+                        type="submit"
+                        fullWidth
+                        sx={{
+                            height: 50,
+                            gap: 1,
+                            mt: 5,
+                        }}
+                        endIcon={
+                            <img
+                                src={Icon}
+                                alt="Icon"
+                                width="12"
+                                height="12"
+                            />
+                        }
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Loading..." : "Login"}
+                    </CustomButton>
 
-        </Container>
+                    <Typography
+                        variant="Login-1"
+                        sx={{
+                            mt: 5,
+                            display: "block",
+                            textAlign: "center",
+                        }}
+                    >
+                        Don't have an account?{" "}
+                        <RouterLink to="/register">
+                            Create one
+                        </RouterLink>
+                    </Typography>
+                </Box>
+            </Container>
+        </Box>
+    </Box>
+);
 
-    );
 }

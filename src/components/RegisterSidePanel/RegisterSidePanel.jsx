@@ -42,7 +42,6 @@ const RegisterSidePanel = () => {
         `,
       }}
     >
-      {/* Header */}
       <Stack
         direction="row"
         alignItems="center"
@@ -294,7 +293,7 @@ const RegisterSidePanel = () => {
         direction={{ xs: "column", sm: "row" }}
         justifyContent="flex-start"
         alignItems={{ xs: "flex-start", sm: "center" }}
-        sx={{ gap: 5 }}
+        sx={{ gap: 15 }}
       >
         <Stack
           direction="row"
@@ -312,7 +311,6 @@ const RegisterSidePanel = () => {
               flexShrink: 0,
               display: "block",
               position: "relative",
-              top: "5px",
             }}
           />
 
@@ -343,7 +341,6 @@ const RegisterSidePanel = () => {
               flexShrink: 0,
               display: "block",
               position: "relative",
-              top: "5px",
             }}
           />
 
