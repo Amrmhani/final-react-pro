@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchema } from "../../validations/authSchemas";
 import axios from "axios";
+import CustomButton from "../../components/UI/Button/Button";
 export default function Register() {
 
     useEffect(() => {
@@ -45,7 +46,7 @@ export default function Register() {
             mr: 8, height: 805, width: 448
         }}>
             <Box sx={{ mb: 5, mt: 10, ml: "auto" }}>
-                <Typography className="font-Primary" sx={{fontSize:40 }}>
+                <Typography className="font-Primary" sx={{ fontSize: 40 }}>
                     Welcome back
                 </Typography>
                 <Typography className=".Inter-login">
@@ -81,10 +82,8 @@ export default function Register() {
 
                 />
 
-                <Button
-                className="primary-color"
+                <CustomButton
                     type="submit"
-                    variant="contained"
                     fullWidth
                     sx={{ height: 50, gap: 1, mt: 5 }}
                     endIcon={
@@ -93,7 +92,8 @@ export default function Register() {
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? "Loading..." : "Login"}
-                </Button>
+                </CustomButton>
+
                 <Typography variant="Login-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Don't have ac account?
                     <RouterLink to="/register">
                         Create one
@@ -102,7 +102,7 @@ export default function Register() {
 
             </Box>
 
-           
+
         </Container>
 
     );
