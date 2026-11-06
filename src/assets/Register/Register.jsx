@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import { registerSchema } from "../../validations/authSchemas";
 import axios from "axios";
+import CustomButton from "../../components/UI/Button/Button";
 
 export default function Register() {
 
@@ -135,14 +136,17 @@ export default function Register() {
                 />
 
 
-                <Button type="submit" variant="contained" fullWidth sx={{ height: 50, gap: 1 }}
+                <CustomButton
+                    type="submit"
+                    fullWidth
+                    sx={{ height: 50, gap: 1, mt: 5 }}
                     endIcon={
                         <img src={Icon} alt="Icon" width="12" height="12" />
                     }
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? "Loading..." : "Register"}
-                </Button>
+                    {isSubmitting ? "Loading..." : "Login"}
+                </CustomButton>
 
                 <Typography variant="register-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Already have an account?
                     <RouterLink to="/login">
