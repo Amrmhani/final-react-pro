@@ -11,6 +11,8 @@ import ShieldIcon from "../../assets/Icons/shield-icon.png";
 import LightningIcon from "../../assets/Icons/lightning-icon.png";
 import Logo from "../../assets/Icons/Logo.png";
 import MemberIcon from "../../assets/Icons/Member-icon.png";
+import registerpicture from "../../assets/Pictures/register.png";
+
 const RegisterSidePanel = () => {
   return (
     <Box
@@ -25,7 +27,6 @@ const RegisterSidePanel = () => {
         justifyContent: "space-between",
         color: "#FFFFFF",
         borderRadius: 2,
-
         background: `
           radial-gradient(
             ellipse at 15% 10%,
@@ -41,11 +42,12 @@ const RegisterSidePanel = () => {
         `,
       }}
     >
+      {/* Header */}
       <Stack
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{gap:30}}
+        sx={{ gap: 30 }}
       >
         <Stack direction="row" alignItems="center" spacing={1.2}>
           <Box
@@ -62,22 +64,36 @@ const RegisterSidePanel = () => {
             }}
           >
             <Box
-      component="img"
-      src={Logo}
-      alt="Logo"
-      sx={{height:30,width:30,position:"relative",top:2}}
-    />
+              component="img"
+              src={Logo}
+              alt="Logo"
+              sx={{
+                height: 30,
+                width: 30,
+                position: "relative",
+                top: 2,
+              }}
+            />
           </Box>
 
           <Box>
-            <Typography fontSize={15} fontWeight={700}>
+            <Typography
+             className="font-Primary"
+              sx={{
+                fontSize: 15,
+                fontWeight: 700,
+              }}
+            >
               IndigoStore
             </Typography>
 
             <Typography
-              fontSize={9}
-              letterSpacing={0.8}
-              color="#C4C1FB"
+             className="font-secondery"
+              sx={{
+                fontSize: 9,
+                letterSpacing: 0.8,
+                color: "#C4C1FB",
+              }}
             >
               CURATED RESERVE
             </Typography>
@@ -99,12 +115,10 @@ const RegisterSidePanel = () => {
           }
           label="TLS 1.3 256-bit Secure"
           sx={{
-            width:175,
-            height:28,
-            bgcolor: "rgba(255,255,255,0.07)",
+            width: 175,
+            height: 24,
             color: "#C4C1FB",
             fontSize: 9,
-            height: 24,
             "& .MuiChip-icon": {
               mr: 0.5,
             },
@@ -112,39 +126,44 @@ const RegisterSidePanel = () => {
         />
       </Stack>
 
-      <Box sx={{ maxWidth: 430, width: "100%", mx: "auto" }}>
-
+      <Box
+        sx={{
+          maxWidth: 430,
+          width: "100%",
+          mx: "auto",
+        }}
+      >
         <Chip
-  icon={
-    <Box
-      component="img"
-      src={MemberIcon}
-      alt="Member"
-      sx={{
-        width: 12,
-        height: 12,
-        objectFit: "contain",
-      }}
-    />
-  }
-  label="MEMBER ONBOARDING"
-  size="small"
-  sx={{
-    bgcolor: "rgba(105,93,218,0.2)",
-    color: "#E1DFFF",
-    fontSize: 9,
-    fontWeight: 600,
-    letterSpacing: 0.7,
-    height: 23,
-    mb: 2.5,
-    "& .MuiChip-icon": {
-      ml: 1,
-      mr: 0.5,
-    },
-  }}
-/>
+          icon={
+            <Box
+              component="img"
+              src={MemberIcon}
+              alt="Member"
+              sx={{
+                width: 12,
+                height: 12,
+                objectFit: "contain",
+              }}
+            />
+          }
+          label="MEMBER ONBOARDING"
+          size="small"
+          sx={{
+            color: "#E1DFFF",
+            fontSize: 9,
+            fontWeight: 600,
+            letterSpacing: 0.7,
+            height: 23,
+            mb: 2.5,
+            "& .MuiChip-icon": {
+              ml: 1,
+              mr: 0.5,
+            },
+          }}
+        />
 
         <Typography
+        className="font-Primary"
           component="h1"
           sx={{
             fontSize: { xs: 34, md: 44 },
@@ -154,10 +173,14 @@ const RegisterSidePanel = () => {
           }}
         >
           Everything you need,
+
           <Box
+           className="font-Primary"
             component="span"
-            display="block"
-            color="#AAA5F5"
+            sx={{
+              display: "block",
+              color: "#AAA5F5",
+            }}
           >
             in one place.
           </Box>
@@ -191,62 +214,75 @@ const RegisterSidePanel = () => {
             color: "#FFFFFF",
           }}
         >
-         
           <Box
             sx={{
               width: 48,
               height: 48,
               flexShrink: 0,
               borderRadius: 1,
-              background: "linear-gradient(145deg,#77736B,#272639)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              overflow: "hidden",
             }}
           >
             <Box
+              component="img"
+              src={registerpicture}
+              alt="Autonomous Sync"
               sx={{
-                width: 23,
-                height: 32,
-                borderRadius: 1,
-                background: "linear-gradient(90deg,#151515,#66645B,#181818)",
-                boxShadow: "0 5px 8px rgba(0,0,0,0.4)",
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
               }}
             />
           </Box>
 
           <Box sx={{ minWidth: 0 }}>
-            <Stack direction="row" spacing={1} flexWrap="wrap">
+            <Stack
+              direction="row"
+              spacing={1}
+              flexWrap="wrap"
+            >
               <Typography
-                fontSize={8}
-                fontWeight={700}
-                color="#C6C4E5"
-                letterSpacing={0.5}
+              className="font-secondery"
+                sx={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  color: "#C6C4E5",
+                  letterSpacing: 0.66,
+                }}
               >
                 AUTONOMOUS SYNC
               </Typography>
 
               <Typography
-                fontSize={8}
-                fontWeight={700}
-                color="#39D9AE"
+                className="font-secondery"
+                sx={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  color: "#34D399",
+                }}
               >
                 Encrypted
               </Typography>
             </Stack>
 
             <Typography
-              fontSize={11}
-              fontWeight={600}
-              mt={0.5}
+            className="font-Primary"
+              sx={{
+                fontSize: 11,
+                fontWeight: 600,
+                mt: 0.5,
+              }}
             >
               Vault Architecture & Curation Engine
             </Typography>
 
             <Typography
-              fontSize={10}
-              color="#B8B7D8"
-              mt={0.5}
+            className="font-secondery"
+              sx={{
+                fontSize: 10,
+                color: "#B8B7D8",
+                mt: 0.5,
+              }}
             >
               Zero-trust credential shielding
             </Typography>
@@ -254,57 +290,85 @@ const RegisterSidePanel = () => {
         </Paper>
       </Box>
 
-      
-<Stack
-  direction={{ xs: "column", sm: "row" }}
-  justifyContent="flex-start"
-  alignItems={{ xs: "flex-start", sm: "center" }}
-  sx={{gap:5}}
->
-  <Stack direction="row" alignItems="center" sx={{gap:1}}>
-    <Box
-      component="img"
-      src={ShieldIcon}
-      alt="Shield"
-      sx={{
-        width: 12,
-        height: 12,
-        objectFit: "contain",
-        flexShrink: 0,
-        display: "block",
-        position: "relative",
-    top: "5px"
-      }}
-    />
-    <Typography fontSize={10} lineHeight={1} color="#C4C1FB">
-      Zero-Knowledge Storage
-    </Typography>
-  </Stack>
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="flex-start"
+        alignItems={{ xs: "flex-start", sm: "center" }}
+        sx={{ gap: 5 }}
+      >
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{ gap: 1 }}
+        >
+          <Box
+            component="img"
+            src={ShieldIcon}
+            alt="Shield"
+            sx={{
+              width: 12,
+              height: 12,
+              objectFit: "contain",
+              flexShrink: 0,
+              display: "block",
+              position: "relative",
+              top: "5px",
+            }}
+          />
 
-  <Stack direction="row" alignItems="center" sx={{gap:1}}>
-    <Box
-      component="img"
-      src={LightningIcon}
-      alt="Lightning"
-      sx={{
-        width: 12,
-        height: 12,
-        objectFit: "contain",
-        flexShrink: 0,
-        display: "block",
-        position:"relative",
-        top:"5px"
-      }}
-    />
-    <Typography fontSize={10} lineHeight={1} color="#C4C1FB">
-      Sub-second Checkout
-    </Typography>
-  </Stack>
+          <Typography
+            sx={{
+              fontSize: 10,
+              lineHeight: 1,
+              color: "#C4C1FB",
+            }}
+          >
+            Zero-Knowledge Storage
+          </Typography>
+        </Stack>
 
-  <Typography fontSize={10} lineHeight={1} color="#C4C1FB" whiteSpace="nowrap">
-    © 2025 IndigoStore Inc.
-  </Typography>
-</Stack>
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{ gap: 1 }}
+        >
+          <Box
+            component="img"
+            src={LightningIcon}
+            alt="Lightning"
+            sx={{
+              width: 12,
+              height: 12,
+              objectFit: "contain",
+              flexShrink: 0,
+              display: "block",
+              position: "relative",
+              top: "5px",
+            }}
+          />
+
+          <Typography
+            sx={{
+              fontSize: 10,
+              lineHeight: 1,
+              color: "#C4C1FB",
+            }}
+          >
+            Sub-second Checkout
+          </Typography>
+        </Stack>
+
+        <Typography
+          sx={{
+            fontSize: 10,
+            lineHeight: 1,
+            color: "#C4C1FB",
+            whiteSpace: "nowrap",
+          }}
+        >
+          © 2025 IndigoStore Inc.
+        </Typography>
+      </Stack>
     </Box>
   );
 };
