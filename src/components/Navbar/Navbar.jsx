@@ -67,7 +67,12 @@ const Logout = () =>{
              <Button sx={{color:"inherit"}} component={Link} to='/'>Collections</Button>
              <Button sx={{color:"inherit"}} component={Link} to='/'>About</Button>
              <Button sx={{color:"inherit"}} component={Link} to='/'>Contact</Button>
-            
+             {token ? <>
+             <Button sx={{color:"inherit"}} onClick={Logout}>Logout</Button>
+             </> : <>
+             <Button sx={{color:"inherit"}} component={Link} to='login'>Login</Button>
+             </>
+             }
           </Box>
           <Search>
   <SearchIconWrapper>
