@@ -53,9 +53,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const token = useAuthstore((state)=>state.token);
-const Logout = () =>{
-  localStorage.removeItem('token');
-}
+const logout = useAuthstore((state)=>state.logout);
+
+
     return(
        <AppBar position="static">
         <Toolbar>
@@ -69,7 +69,7 @@ const Logout = () =>{
              <Button sx={{color:"inherit"}} component={Link} to='/'>About</Button>
              <Button sx={{color:"inherit"}} component={Link} to='/'>Contact</Button>
              {token ? <>
-             <Button sx={{color:"inherit"}} onClick={Logout}>Logout</Button>
+             <Button sx={{color:"inherit"}} onClick={logout}>Logout</Button>
              </> : <>
              <Button sx={{color:"inherit"}} component={Link} to='login'>Login</Button>
              </>
