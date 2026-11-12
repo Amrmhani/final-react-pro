@@ -10,6 +10,7 @@ import { loginSchema } from "../../validations/authSchemas";
 import axios from "axios";
 import CustomButton from "../../components/UI/Button/Button";
 import LoginSidePanel from "../../components/LoginSidePanel/LoginSidePanel";
+import { useAuthstore } from "../../store/useAuthStore";
 
 export default function Register() {
 
@@ -21,8 +22,10 @@ export default function Register() {
         };
     }, []);
     const navigate = useNavigate();
+    const login = useAuthstore((state) => state.login);
     const [serverError, setServerError] = useState(null);
     const [succes, setsucces] = useState(false);
+
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(loginSchema), mode: "onBlur"
@@ -32,8 +35,8 @@ export default function Register() {
         try {
             const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/Login', data)
             setsucces(true);
+            login(response.data.accessToken)
             navigate('/');
-            localStorage.setItem('token',response.data.accessToken);
         } catch (err) {
             console.log(err.response);
             setServerError("Registeration Failed");
