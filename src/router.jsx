@@ -5,6 +5,7 @@ import AuthLayout from "./Layout/AuthLayout";
 import Login from "./assets/LogIn/Login";
 import Register from "./assets/Register/Register";
 import ProductsDetails from "./pages/ProductsDetails";
+import { AuthProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
     {
@@ -12,7 +13,11 @@ const router = createBrowserRouter([
         element:<MainLayout />,
         children:[
             {
-                index:true,element:<Home />
+                index:true,element:
+                <AuthProvider>
+                 <Home />
+                </AuthProvider>
+                
             },
             {
                 path:'products/:id',element:<ProductsDetails />
