@@ -50,6 +50,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+
+const token = localStorage.getItem('token');
+const Logout = () =>{
+  localStorage.removeItem('token');
+}
     return(
        <AppBar position="static">
         <Toolbar>
@@ -57,11 +62,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             IndigoStore
           </Typography>
           <Box sx={{flexGrow:1}}>
-            <Button  component={Link} to='/'>Home</Button>
-             <Button  component={Link} to='/'>Shop</Button>
-             <Button  component={Link} to='/'>Collections</Button>
-             <Button  component={Link} to='/'>About</Button>
-             <Button  component={Link} to='/'>Contact</Button>
+            <Button sx={{color:"inherit"}} component={Link} to='/'>Home</Button>
+             <Button sx={{color:"inherit"}} component={Link} to='/'>Shop</Button>
+             <Button sx={{color:"inherit"}} component={Link} to='/'>Collections</Button>
+             <Button sx={{color:"inherit"}} component={Link} to='/'>About</Button>
+             <Button sx={{color:"inherit"}} component={Link} to='/'>Contact</Button>
+            
           </Box>
           <Search>
   <SearchIconWrapper>
