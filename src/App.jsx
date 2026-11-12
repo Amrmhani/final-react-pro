@@ -4,7 +4,7 @@ import router from './router';
 import {
   QueryClient,
   QueryClientProvider,
-}from '@tanstack/react-query'
+} from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { AuthProvider } from './context/AuthContext';
 
@@ -17,7 +17,7 @@ export default function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
-<RouterProvider router={router} />
+          <RouterProvider router={router} />
         </AuthProvider>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>

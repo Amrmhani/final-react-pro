@@ -10,7 +10,7 @@ import SearchIcon from "../../assets/icons/search.png";
 import InputBase from '@mui/material/InputBase';
 
 
-export default function Navbar( {token , setToken}){
+export default function Navbar(){
     const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
