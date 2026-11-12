@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import SearchIcon from "../../assets/icons/search.png";
 import InputBase from '@mui/material/InputBase';
+import { useAuthstore } from '../../store/useAuthStore';
 
 
 export default function Navbar(){
@@ -50,7 +51,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-const token = localStorage.getItem('token');
+
+const token = useAuthstore((state)=>state.token);
 const Logout = () =>{
   localStorage.removeItem('token');
 }
