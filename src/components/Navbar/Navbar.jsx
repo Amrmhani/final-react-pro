@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import react from 'react';
+import react, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import SearchIcon from "../../assets/icons/search.png";
@@ -50,7 +50,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-
 const token = localStorage.getItem('token');
 const Logout = () =>{
   localStorage.removeItem('token');
