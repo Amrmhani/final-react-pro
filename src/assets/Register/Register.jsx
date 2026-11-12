@@ -152,7 +152,7 @@ export default function Register() {
                             }
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? "Loading..." : "Login"}
+                            {isSubmitting ? "Loading..." : "register"}
                         </CustomButton>
 
                         <Typography variant="register-1" sx={{ mt: 5, display: 'block', textAlign: 'center' }}>Already have an account?

@@ -22,7 +22,7 @@ export default function Register() {
     }, []);
     const navigate = useNavigate();
     const [serverError, setServerError] = useState(null);
-    const [succes, setucces] = useState(false);
+    const [succes, setsucces] = useState(false);
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(loginSchema), mode: "onBlur"
@@ -31,8 +31,9 @@ export default function Register() {
         console.log(data);
         try {
             const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/Login', data)
-            setucces(true);
-            navigate('/home');
+            setsucces(true);
+            navigate('/');
+            localStorage.setItem('token',response.data.accessToken);
         } catch (err) {
             console.log(err.response);
             setServerError("Registeration Failed");
