@@ -1,0 +1,15 @@
+import { createContext, useState } from "react";
+
+
+export const AuthContext = createContext(null); 
+
+export function AuthProvider(){
+    const [token , setToken] = useState(localStorage.getItem('token'));
+
+    return (
+        <AuthContext.Provider value={{token,setToken}}>
+            
+        </AuthContext.Provider>
+    )
+
+}
