@@ -53,15 +53,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     return(
        <AppBar position="static">
         <Toolbar>
-          <Typography variant='h6' component={Link} to='/'>
+          <Typography variant='h6' component={Link} to='/' sx={{textDecoration:'none'}}>
             IndigoStore
           </Typography>
           <Box sx={{flexGrow:1}}>
-            <Button color="black" component={Link} to='/'>Home</Button>
-             <Button color="black" component={Link} to='/'>Shop</Button>
-             <Button color="black" component={Link} to='/'>Collections</Button>
-             <Button color="black" component={Link} to='/'>About</Button>
-             <Button color="black" component={Link} to='/'>Contact</Button>
+            <Button  component={Link} to='/'>Home</Button>
+             <Button  component={Link} to='/'>Shop</Button>
+             <Button  component={Link} to='/'>Collections</Button>
+             <Button  component={Link} to='/'>About</Button>
+             <Button  component={Link} to='/'>Contact</Button>
           </Box>
           <Search>
   <SearchIconWrapper>
