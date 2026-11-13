@@ -1,7 +1,7 @@
 import React from 'react'
 import useCart from '../hooks/useCart'
 import { useAuthstore } from '../store/useAuthStore'
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
@@ -14,8 +14,14 @@ export default function Cart() {
         <Typography>
             Please login to view your cart
         </Typography>
-        <Button component={Link} to="/login"></Button>
+        <Button Com={Link} to="/login">login</Button>
     </Box>
   )
   }
+
+  if(isPending){
+    <CircularProgress />
+  }
+
+  
 }
