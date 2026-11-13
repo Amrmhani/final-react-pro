@@ -37,7 +37,7 @@ const navigate = useNavigate();
       return;
     }
     addToCart(data.id,{
-      onsuccess:()=>{
+      onSuccess:()=>{
         console.log("added To Cart")
       },onError:(error)=>{
         console.log(error)
@@ -79,7 +79,7 @@ const navigate = useNavigate();
 
           <Typography>{data.description}</Typography>
 
-          <Button variant="contained" disabled={!inStock} onClick={addToCart(handelAddToCart)}>
+          <Button variant="contained" disabled={!inStock || addToCartPending} onClick={addToCart(handelAddToCart)}>
             Add To Cart
           </Button>
         </Box>
