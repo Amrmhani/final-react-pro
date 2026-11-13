@@ -10,7 +10,7 @@ export default function CartSummary({total}) {
 
         <Divider />
         <Box>
-            <Typography>Total Price: ${total.toFixed(2)}</Typography>
+            <Typography>Total Price: ${total}</Typography>
         </Box>
         <Button variant="contained" fullWidth>checkout</Button>
     </Paper>

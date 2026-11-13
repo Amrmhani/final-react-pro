@@ -40,7 +40,7 @@ export default function Cart() {
 </Box>
 
        <Box>
-        <CartSummary />
+        <CartSummary total={data?.cartTotal}/>
        </Box>
     </Box>
   )
