@@ -1,6 +1,6 @@
 
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "../api/axiosInstance";
 
 export const useProducts = () => {
   const getProducts = async () => {
