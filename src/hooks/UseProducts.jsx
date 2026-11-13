@@ -4,7 +4,7 @@ import axiosInstance from "../api/axiosInstance";
 
 export const useProducts = () => {
   const getProducts = async () => {
-        const response = await axiosInstance.get(`Products/${id}`);
+        const response = await axiosInstance.get(`Products`);
 
 
     return response.data.response.data;
