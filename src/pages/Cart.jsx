@@ -1,7 +1,7 @@
 import React from 'react'
 import useCart from '../hooks/useCart'
 import { useAuthstore } from '../store/useAuthStore'
-import { Box, Button, CircularProgress, Typography } from '@mui/material';
+import { Alert, Box, Button, CircularProgress, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
@@ -21,6 +21,10 @@ export default function Cart() {
 
   if(isPending){
     <CircularProgress />
+  }
+  
+  if(isError){
+    return <Alert severity="error">Faild to load cart items</Alert>
   }
 
   
