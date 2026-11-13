@@ -9,10 +9,11 @@ const authAxiosInstance = axios.create({
 });
 
 authAxiosInstance.interceptors.request.use((config)=>{
-    const token = useAuthstore((state)=> state.token);
+    const token = useAuthstore(getstate().token);
     if(token){
         config.headers.Authorization = `Bearer ${token}`;
     }
+    return config;
 });
 
 
