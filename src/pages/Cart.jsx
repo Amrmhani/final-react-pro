@@ -1,7 +1,7 @@
 import React from 'react'
 import useCart from '../hooks/useCart'
 import { useAuthstore } from '../store/useAuthStore'
-import { Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
