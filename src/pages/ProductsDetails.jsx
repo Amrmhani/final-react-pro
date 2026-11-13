@@ -20,10 +20,10 @@ import useAddToCart from "../hooks/useAddToCart";
 
 
 export default function ProductDetails() {
-const token = useAuthstore((state)=>state.token)
-const navigate = useNavigate();
- const {id} = useParams();
- const {mutate:addToCart,isPending:addToCartPending} = useAddToCart();
+  const token = useAuthstore((state) => state.token)
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { mutate: addToCart, isPending: addToCartPending } = useAddToCart();
   const { data, isPending, isError } = UseProduct(id);
 
   if (isPending) return <CircularProgress />;
@@ -31,15 +31,15 @@ const navigate = useNavigate();
 
   const inStock = data.quantity > 0;
 
-  const handelAddToCart = ()=>{
-    if(!token){
+  const handelAddToCart = () => {
+    if (!token) {
       navigate('/login')
       return;
     }
-    addToCart(data.id,{
-      onSuccess:()=>{
+    addToCart(data.id, {
+      onSuccess: () => {
         console.log("added To Cart")
-      },onError:(error)=>{
+      }, onError: (error) => {
         console.log(error)
       }
     });
@@ -79,8 +79,12 @@ const navigate = useNavigate();
 
           <Typography>{data.description}</Typography>
 
-          <Button variant="contained" disabled={!inStock || addToCartPending} onClick={addToCart(handelAddToCart)}>
-            Add To Cart
+          <Button
+            variant="contained"
+            disabled={!inStock || addToCartPending}
+            onClick={handelAddToCart}
+          >
+            {addToCartPending ? "Adding..." : "Add To Cart"}
           </Button>
         </Box>
       </Box>
