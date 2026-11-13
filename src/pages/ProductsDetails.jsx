@@ -16,20 +16,34 @@ import { useNavigate, useParams } from "react-router-dom";
 import UseProduct from "../hooks/UseProduct";
 import ReviewItem from "../components/Products/ReviewItem";
 import { useAuthstore } from "../store/useAuthStore";
+import useAddToCart from "../hooks/useAddToCart";
 
 
 export default function ProductDetails() {
 const token = useAuthstore((state)=>state.token)
 const navigate = useNavigate();
-
  const {id} = useParams();
-
+ const {mutate:addToCart,isPending:addToCartPending} = useAddToCart();
   const { data, isPending, isError } = UseProduct(id);
 
   if (isPending) return <CircularProgress />;
   if (isError) return <Alert severity="error">Failed to load product details.</Alert>;
 
   const inStock = data.quantity > 0;
+
+  const handelAddToCart = ()=>{
+    if(!token){
+      navigate('/login')
+      return;
+    }
+    addToCart(data.id,{
+      onsuccess:()=>{
+        console.log("added To Cart")
+      },onError:(error)=>{
+        console.log(error)
+      }
+    });
+  }
 
   return (
     <>
@@ -65,7 +79,7 @@ const navigate = useNavigate();
 
           <Typography>{data.description}</Typography>
 
-          <Button variant="contained" disabled={!inStock}>
+          <Button variant="contained" disabled={!inStock} onClick={addToCart(handelAddToCart)}>
             Add To Cart
           </Button>
         </Box>
