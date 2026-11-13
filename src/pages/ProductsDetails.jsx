@@ -12,14 +12,17 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import UseProduct from "../hooks/UseProduct";
 import ReviewItem from "../components/Products/ReviewItem";
+import { useAuthstore } from "../store/useAuthStore";
 
 
 export default function ProductDetails() {
+const token = useAuthstore((state)=>state.token)
+const navigate = useNavigate();
+
  const {id} = useParams();
-    console.log(id);
 
   const { data, isPending, isError } = UseProduct(id);
 
