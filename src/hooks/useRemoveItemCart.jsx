@@ -4,13 +4,18 @@ import { useMutation } from '@tanstack/react-query';
 
 export default function useRemoveItemCart() {
 
-    const removeItemCart = async(productId)=>{
+    const queryClient = useQueryClient();
+
+    const removeItemCart = async (productId) => {
         const response = await authAxiosInstance.delete(`carts/${productId}`)
         return response.data;
     }
-  return useMutation({
-    mutationFn:removeItemCart,
-  }
-    
-  )
+    return useMutation({
+        mutationFn: removeItemCart,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['cart'] })
+        }
+    }
+
+    )
 }
