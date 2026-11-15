@@ -1,5 +1,6 @@
 import React from 'react'
 import authAxiosInstance from '../api/authAxiosInstance'
+import { useMutation } from '@tanstack/react-query'
 
 export default function useUpdateCartItem() {
 
@@ -8,9 +9,9 @@ export default function useUpdateCartItem() {
        return response.data;
     }
 
-  return (
-    <div>
-      
-    </div>
+  return useMutation ({
+    mutationFn:updateCartItem
+  }
+    
   )
 }
