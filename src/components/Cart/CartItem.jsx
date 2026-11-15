@@ -4,14 +4,14 @@ import React from 'react'
 export default function CartItem({item}) {
 
   return (
-    <Paper>
+    <Paper sx={{p:2 , mb:3 , display:'flex' , justifyContent:'space-between' , alignItems:'center' , }}>
         <Box>
             <Typography>{item.productName}</Typography>
             <Typography>${item.price} each</Typography>
                       
         </Box>
 
-        <Typography>Quantity: {item.quantity}</Typography>
+        <Typography>Quantity: {item.count}</Typography>
         <Typography>Total: ${item.totalPrice}</Typography>
 
     </Paper>
