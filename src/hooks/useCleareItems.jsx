@@ -4,6 +4,7 @@ import { useMutation } from '@tanstack/react-query';
 
 export default function useCleareItems() {
 
+    const queryClient = useQueryClient();
 
     const clearCart = async () => {
     const response = await authAxiosInstance.delete("Carts");
@@ -11,6 +12,9 @@ export default function useCleareItems() {
 };
   return useMutation ({
     mutationFn:clearCart,
+    onSuccess:()=>{
+        queryClient.invalidateQueries({queryKey:['cart']})
+    }
   }
    
   )
