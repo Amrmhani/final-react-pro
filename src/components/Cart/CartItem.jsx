@@ -1,8 +1,13 @@
-import { Box, IconButton, Paper, Typography ,RemoveIcon } from '@mui/material'
+import { Box, IconButton, Paper, Typography} from '@mui/material'
 import React from 'react'
+import useUpdateCartItem from '../../hooks/useUpdateCartItem';
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
+
+
 
 export default function CartItem({item}) {
-    const {mutate:updateCartItem , isPending} = updateCartItem;
+    const {mutate:updateCartItem , isPending} = useUpdateCartItem();
 
     const handelIncrease = ()=>{
         updateCartItem({productId:item.productId , count: item.count + 1})
@@ -23,9 +28,12 @@ export default function CartItem({item}) {
             <IconButton onClick={handelDecrease} disabled={isPending || item.count == 1}>
             <RemoveIcon sx={{ fontsize:'small'}}/>
         </IconButton>
+                <Typography>Quantity: {item.count}</Typography>
+                    <IconButton onClick={handelIncrease}>
+                      <AddIcon sx={{fontsize:'small'}} />
+                    </IconButton>
         </Box>
 
-        <Typography>Quantity: {item.count}</Typography>
         <Typography>Total: ${item.totalPrice}</Typography>
 
     </Paper>
