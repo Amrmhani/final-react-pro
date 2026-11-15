@@ -3,11 +3,13 @@ import React from 'react'
 import useUpdateCartItem from '../../hooks/useUpdateCartItem';
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import useRemoveItemCart from '../../hooks/useRemoveItemCart';
 
 
 
 export default function CartItem({item}) {
     const {mutate:updateCartItem , isPending} = useUpdateCartItem();
+    const {mutate:removeCartItem,isPending:isRemovePending} = useRemoveItemCart();
 
     const handelIncrease = ()=>{
         updateCartItem({productId:item.productId , count: item.count + 1})
