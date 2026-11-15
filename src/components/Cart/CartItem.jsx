@@ -29,7 +29,7 @@ export default function CartItem({item}) {
             <RemoveIcon sx={{ fontsize:'small'}}/>
         </IconButton>
                 <Typography>Quantity: {item.count}</Typography>
-                    <IconButton onClick={handelIncrease}>
+                    <IconButton onClick={handelIncrease} disable={isPending}>
                       <AddIcon sx={{fontsize:'small'}} />
                     </IconButton>
         </Box>
