@@ -7,7 +7,7 @@ export default function useCleareItems() {
     const queryClient = useQueryClient();
 
     const clearCart = async () => {
-    const response = await authAxiosInstance.delete("Carts");
+    const response = await authAxiosInstance.delete("Carts/cleare");
     return response.data;
 };
   return useMutation ({
