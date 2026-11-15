@@ -22,7 +22,7 @@ export default function Cart() {
   }
 
   if(isPending){
-    <CircularProgress />
+    return <CircularProgress />
   }
   
   if(isError){
@@ -34,13 +34,13 @@ export default function Cart() {
         display:'grid',gridTemplateColumns:{xs:'1fr',md:'2fr 1fr'}
     }}>
         <Box>
-    {data?.item?.map((item) => (
-        <CartItem key={item.id} item={item} />
-    ))}
+   {data?.items?.map((item) => (
+    <CartItem key={item.productId} item={item} />
+))}
 </Box>
 
        <Box>
-        <CartSummary total={data?.cartTotal}/>
+<CartSummary total={data.cartTotal} />
        </Box>
     </Box>
   )
