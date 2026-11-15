@@ -4,6 +4,7 @@ import useUpdateCartItem from '../../hooks/useUpdateCartItem';
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import useRemoveItemCart from '../../hooks/useRemoveItemCart';
+import { toast } from 'react-toastify';
 
 
 
@@ -11,11 +12,22 @@ export default function CartItem({item}) {
     const {mutate:updateCartItem , isPending} = useUpdateCartItem();
     const {mutate:removeCartItem,isPending:isRemovePending} = useRemoveItemCart();
 
-    const handelIncrease = ()=>{
+    const handeleIncrease = ()=>{
         updateCartItem({productId:item.productId , count: item.count + 1})
     }
-    const handelDecrease = ()=>{
+    const handeleDecrease = ()=>{
         updateCartItem({productId:item.productId , count: item.count - 1})
+    }
+
+    const handeleRemove = ()=>{
+        removeCartItem(item.productId),{
+            onSuccess:()=>{
+                toast.success('Item removed from cart');
+            },
+            onError:()=>{
+                toast.error('Failed to remove item from cart')
+            }
+        }
     }
 
   return (
@@ -27,11 +39,11 @@ export default function CartItem({item}) {
                       
         </Box>
         <Box sx={{display:'flex' , alignItems:'center' , border:1, borderColor:'gray.400' , borderRadius:1 , p:1}}>
-            <IconButton onClick={handelDecrease} disabled={isPending || item.count == 1}>
+            <IconButton onClick={handeleDecrease} disabled={isPending || item.count == 1}>
             <RemoveIcon sx={{ fontsize:'small'}}/>
         </IconButton>
                 <Typography>Quantity: {item.count}</Typography>
-                    <IconButton onClick={handelIncrease} disable={isPending}>
+                    <IconButton onClick={handeleIncrease} disable={isPending}>
                       <AddIcon sx={{fontsize:'small'}} />
                     </IconButton>
         </Box>
