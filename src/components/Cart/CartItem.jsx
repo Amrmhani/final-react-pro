@@ -5,13 +5,16 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from '@mui/icons-material/Delete';
 import useRemoveItemCart from '../../hooks/useRemoveItemCart';
+import ClearIcon from '@mui/icons-material/Clear';
 import { toast } from 'react-toastify';
+import useCleareItems from '../../hooks/useCleareItems';
 
 
 
 export default function CartItem({item}) {
     const {mutate:updateCartItem , isPending} = useUpdateCartItem();
     const {mutate:removeCartItem,isPending:isRemovePending} = useRemoveItemCart();
+    const {mutate:cleareCartItem , isPending:isClearPending} = useCleareItems();
 
     const handeleIncrease = ()=>{
         updateCartItem({productId:item.productId , count: item.count + 1})
@@ -29,6 +32,9 @@ export default function CartItem({item}) {
                 toast.error('Failed to remove item from cart')
             }
         }
+    }
+    const handeleCleare = ()=>{
+      cleareCartItem();
     }
 
   return (
@@ -52,6 +58,9 @@ export default function CartItem({item}) {
         <Typography>Total: ${item.totalPrice}</Typography>
         <IconButton onClick={handeleRemove} disabled={isRemovePending}>
           <DeleteIcon />
+        </IconButton>
+        <IconButton onClick={handeleCleare} disabled={isClearPending}>
+            <ClearIcon />
         </IconButton>
 
     </Paper>

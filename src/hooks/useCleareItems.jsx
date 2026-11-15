@@ -1,6 +1,6 @@
 import React from 'react'
 import authAxiosInstance from '../api/authAxiosInstance';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export default function useCleareItems() {
 
