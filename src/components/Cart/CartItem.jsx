@@ -3,6 +3,7 @@ import React from 'react'
 import useUpdateCartItem from '../../hooks/useUpdateCartItem';
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from '@mui/icons-material/Delete';
 import useRemoveItemCart from '../../hooks/useRemoveItemCart';
 import { toast } from 'react-toastify';
 
@@ -49,6 +50,9 @@ export default function CartItem({item}) {
         </Box>
 
         <Typography>Total: ${item.totalPrice}</Typography>
+        <IconButton onClick={handeleRemove} disabled={isRemovePending}>
+          <DeleteIcon />
+        </IconButton>
 
     </Paper>
   )
