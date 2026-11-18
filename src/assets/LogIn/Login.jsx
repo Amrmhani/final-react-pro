@@ -122,7 +122,7 @@ return (
                         }}
                     >
                         <RouterLink
-                            to="/forgotpassword"
+                            to="/SendCode"
                             style={{
                                 color: "#4E45D5",
                                 textDecoration: "none",
