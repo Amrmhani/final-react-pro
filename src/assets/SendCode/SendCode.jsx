@@ -17,6 +17,18 @@ export default function SendCode() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(sendCodeSchema), mode: "onBlur"
     })
+    const onSubmit = async (data) => {
+        console.log(data);
+        try {
+            const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/SendCode', data)
+            setsucces(true);
+            sessionStorage.setItem("resetEmail", data.email);
+            navigate('/');
+        } catch (err) {
+            console.log(err.response);
+            setServerError("Sending Code Failed");
+        }
+    }
 
     return (
         <Box>
