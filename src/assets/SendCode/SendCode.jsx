@@ -11,7 +11,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
  
 export default function SendCode() {
     const navigate = useNavigate();
-   
+   const [serverError, setServerError] = useState(null);
+       const [succes, setsucces] = useState(false);
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(sendCodeSchema), mode: "onBlur"
