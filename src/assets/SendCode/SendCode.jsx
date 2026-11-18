@@ -1,13 +1,28 @@
-import { Box, Container, TextField } from '@mui/material'
+import { Box, Container, TextField ,Typography} from '@mui/material'
 import React from 'react'
+import { Link as RouterLink, useNavigate } from "react-router";
+import { sendCodeSchema } from '../../validations/authSchemas';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 
 
 
+ 
 export default function SendCode() {
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+        resolver: yupResolver(sendCodeSchema), mode: "onBlur"
+    })
     return (
         <Box>
-                <Container>
+                <Container 
+                maxWidth={false}
+                sx={{
+                    width: "100%",
+                    maxWidth: 448,
+                    p: 0,
+                    m: 0,
+                }}>
                     <Box sx={{ mb: 5 }}>
                         <Typography
                             className="font-Primary"
@@ -16,7 +31,7 @@ export default function SendCode() {
                             Verification Code
                         </Typography>
 
-                        <Typography className=".Inter-login">
+                        <Typography className="font-secondery">
                             Enter your registered email address to receive a 6-digit confirmation code
                         </Typography>
                     </Box>
@@ -24,6 +39,7 @@ export default function SendCode() {
                         <TextField 
                         label ="Email adress"
                         fullWidth
+                        {...register("email")}
                         />
                     </Box>
                 </Container>
