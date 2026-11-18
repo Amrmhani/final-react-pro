@@ -10,9 +10,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
  
 export default function SendCode() {
+    const navigate = useNavigate();
+   
+
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(sendCodeSchema), mode: "onBlur"
     })
+
     return (
         <Box>
                 <Container 
