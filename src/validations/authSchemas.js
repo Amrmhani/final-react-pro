@@ -27,3 +27,8 @@ export const loginSchema = yup.object({
         .matches(/[0-9]/, "Password must contain a number")
 })
 
+export const sendCodeSchema = yup.object({
+    email: yup.string()
+        .required("Email is required")
+        .email("Invalid Email Format"),
+});
