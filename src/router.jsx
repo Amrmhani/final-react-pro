@@ -6,6 +6,7 @@ import Login from "./assets/LogIn/Login";
 import Register from "./assets/Register/Register";
 import ProductsDetails from "./pages/ProductsDetails";
 import Cart from "./pages/Cart";
+import SendCode from "./assets/SendCode/SendCode";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,9 @@ const router = createBrowserRouter([
     },
         {
      path:'/register',element: <Register />
+    },
+    {
+        path:'/SendCode',element:<SendCode />
     }
 ]
 }
