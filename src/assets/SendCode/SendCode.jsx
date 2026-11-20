@@ -1,4 +1,4 @@
-import { Box, Container, TextField ,Typography} from '@mui/material'
+import { Box, Container, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { Link as RouterLink, useNavigate } from "react-router";
 import { sendCodeSchema } from '../../validations/authSchemas';
@@ -8,11 +8,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 
 
- 
+
 export default function SendCode() {
     const navigate = useNavigate();
-   const [serverError, setServerError] = useState(null);
-       const [succes, setsucces] = useState(false);
+    const [serverError, setServerError] = useState(null);
+    const [succes, setsucces] = useState(false);
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(sendCodeSchema), mode: "onBlur"
@@ -32,7 +32,7 @@ export default function SendCode() {
 
     return (
         <Box>
-                <Container 
+            <Container
                 maxWidth={false}
                 sx={{
                     width: "100%",
@@ -40,26 +40,31 @@ export default function SendCode() {
                     p: 0,
                     m: 0,
                 }}>
-                    <Box sx={{ mb: 5 }}>
-                        <Typography
-                            className="font-Primary"
-                            sx={{ fontSize: 40 }}
-                        >
-                            Verification Code
-                        </Typography>
+                <Box sx={{ mb: 5 }}>
+                    <Typography
+                        className="font-Primary"
+                        sx={{ fontSize: 40 }}
+                    >
+                        Verification Code
+                    </Typography>
 
-                        <Typography className="font-secondery">
-                            Enter your registered email address to receive a 6-digit confirmation code
-                        </Typography>
-                    </Box>
-                    <Box>
-                        <TextField 
-                        label ="Email adress"
+                    <Typography className="font-secondery">
+                        Enter your registered email address to receive a 6-digit confirmation code
+                    </Typography>
+                </Box>
+                {serverError && (
+                    <Alert severity="error" sx={{ mb: 2 }}>
+                        {serverError}
+                    </Alert>
+                )}
+                <Box>
+                    <TextField
+                        label="Email adress"
                         fullWidth
                         {...register("email")}
-                        />
-                    </Box>
-                </Container>
+                    />
+                </Box>
+            </Container>
         </Box>
     )
 }
