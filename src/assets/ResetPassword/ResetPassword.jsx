@@ -75,7 +75,18 @@ export default function ResetPassword() {
             type="password"
             fullWidth
           />
-
+           <CustomButton
+                        type="submit"
+                        fullWidth
+                        sx={{
+                            height: 50,
+                            gap: 1,
+                            mt: 5,
+                        }}
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Resetting..." : "Reset Password"}
+                    </CustomButton>
         </Box>
       </Container>
 
