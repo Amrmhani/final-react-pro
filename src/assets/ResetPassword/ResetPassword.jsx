@@ -63,7 +63,9 @@ export default function ResetPassword() {
             label="Enter a 4-digit code"
             type="text"
             inputProps={{ maxLength: 4, inputMode: "numeric" }}
-
+             {...register("code")}
+              error={!!errors.code}
+              helperText={errors.code?.message}
           />
 
           <TextField
