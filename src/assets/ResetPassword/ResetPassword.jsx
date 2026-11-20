@@ -22,6 +22,8 @@ export default function ResetPassword() {
         <Box>
           <TextField
           label = "Enter a 4-digit code"
+          type="text"
+          inputProps={{ maxLength: 4, inputMode: "numeric" }} 
           
           />
           
