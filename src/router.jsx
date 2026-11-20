@@ -35,10 +35,10 @@ const router = createBrowserRouter([
      path:'/register',element: <Register />
     },
     {
-        path:'/SendCode',element:<SendCode />
+        path:'/send-code',element:<SendCode />
     },
     {
-        path:'/ResetPassword',element:<ResetPassword />
+        path:'/reset-password',element:<ResetPassword />
     }
 ]
 }
