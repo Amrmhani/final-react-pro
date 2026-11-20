@@ -11,6 +11,32 @@ const [serverError, setServerError] = useState(null);
  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: yupResolver(sendCodeSchema), mode: "onBlur"
     })
+
+     const onSubmit = async (data) => {
+    console.log(data);
+
+    setServerError(null);
+
+    try {
+        const email = sessionStorage.getItem("resetEmail");
+
+        const response = await axios.patch(
+            'https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword',
+            {
+                email: email,
+                code: data.code,
+                newPassword: data.newPassword
+            }
+        );
+
+        sessionStorage.removeItem("resetEmail");
+        navigate('/login');
+
+    } catch (err) {
+        console.log(err.response);
+        setServerError("Password Reset Failed");
+    }
+};
 export default function ResetPassword() {
   return (
     <Box >
