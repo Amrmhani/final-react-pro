@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { resetPasswordSchema } from '../../validations/authSchemas';
 import axios from "axios";
+import CustomButton from '../../components/UI/Button/Button';
+
 
 
 export default function ResetPassword() {
@@ -16,29 +18,32 @@ const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm(
 })
 
 const onSubmit = async (data) => {
-  console.log(data);
+    setServerError(null);
 
-  setServerError(null);
+    try {
+        const email = sessionStorage.getItem("resetEmail");
 
-  try {
-    const email = sessionStorage.getItem("resetEmail");
+        if (!email) {
+            navigate("/send-code");
+            return;
+        }
 
-    const response = await axios.patch(
-      'https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword',
-      {
-        email: email,
-        code: data.code,
-        newPassword: data.newPassword
-      }
-    );
+        await axios.patch(
+            "https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword",
+            {
+                email: email,
+                code: data.code,
+                newPassword: data.newPassword
+            }
+        );
 
-    sessionStorage.removeItem("resetEmail");
-    navigate('/login');
+        sessionStorage.removeItem("resetEmail");
+        navigate("/login");
 
-  } catch (err) {
-    console.log(err.response);
-    setServerError("Password Reset Failed");
-  }
+    } catch (err) {
+        console.log(err.response);
+        setServerError("Password Reset Failed");
+    }
 };
   return (
     <Box >
