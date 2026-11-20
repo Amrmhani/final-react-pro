@@ -4,23 +4,27 @@ import { Link as RouterLink, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
-import "./forgotPassword.css";
 
 
 
-export default function ForgotPassword() {
+export default function ResetPassword() {
   return (
-    <Box className="forgot-password">
-      <Box className="forgot-password-content">
+    <Box >
+      <Container>
         <Box>
-          <Typography className="plus-jakarta-forgot">
+          <Typography className="font-Primary">
             Reset Password
           </Typography>
-          <Typography className="Inter-forgot">
+          <Typography className="font-secondery">
             Create a strong new password for your IndigoStore account.
           </Typography>
         </Box>
-        <Box className="forgot-password-form">
+        <Box>
+          <TextField
+          label = "Enter a 4-digit code"
+          
+          />
+          
           <TextField
             label="New Password"
             type="password"
@@ -33,7 +37,7 @@ export default function ForgotPassword() {
              />
 
         </Box>
-      </Box>
+      </Container>
 
     </Box>
 
