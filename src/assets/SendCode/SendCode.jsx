@@ -23,7 +23,7 @@ export default function SendCode() {
             const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/SendCode', data)
             setsucces(true);
             sessionStorage.setItem("resetEmail", data.email);
-            navigate('/');
+            navigate('/ResetPassword');
         } catch (err) {
             console.log(err.response);
             setServerError("Sending Code Failed");
