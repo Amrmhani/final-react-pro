@@ -3,13 +3,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { resetPasswordSchema } from '../../validations/authSchemas';
 import axios from "axios";
 
 const navigate = useNavigate();
 const [serverError, setServerError] = useState(null);
 const [succes, setsucces] = useState(false);
 const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
-  resolver: yupResolver(sendCodeSchema), mode: "onBlur"
+  resolver: yupResolver(resetPasswordSchema), mode: "onBlur"
 })
 
 const onSubmit = async (data) => {
