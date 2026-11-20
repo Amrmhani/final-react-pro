@@ -1,11 +1,13 @@
 import { Box, Container, TextField, Typography, Button, Alert } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 
-
+    const navigate = useNavigate();
+const [serverError, setServerError] = useState(null);
+    const [succes, setsucces] = useState(false);
 
 export default function ResetPassword() {
   return (
