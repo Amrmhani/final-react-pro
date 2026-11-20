@@ -57,7 +57,9 @@ export default function SendCode() {
                         {serverError}
                     </Alert>
                 )}
-                <Box>
+                <Box 
+                 component="form"
+                 onSubmit={handleSubmit(onSubmit)}>
                     <TextField
                         label="Email adress"
                         fullWidth
