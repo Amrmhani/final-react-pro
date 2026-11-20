@@ -8,7 +8,9 @@ import axios from "axios";
     const navigate = useNavigate();
 const [serverError, setServerError] = useState(null);
     const [succes, setsucces] = useState(false);
-
+ const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+        resolver: yupResolver(sendCodeSchema), mode: "onBlur"
+    })
 export default function ResetPassword() {
   return (
     <Box >
