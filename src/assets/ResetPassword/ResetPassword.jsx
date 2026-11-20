@@ -6,105 +6,122 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { resetPasswordSchema } from '../../validations/authSchemas';
 import axios from "axios";
 import CustomButton from '../../components/UI/Button/Button';
+import ResetPasswordSidePanel from "../../components/ResetPasswordSidePanel/ResetPasswordSidePanel";
 
 
 
 export default function ResetPassword() {
   const navigate = useNavigate();
-const [serverError, setServerError] = useState(null);
-const [succes, setsucces] = useState(false);
-const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
-  resolver: yupResolver(resetPasswordSchema), mode: "onBlur"
-})
+  const [serverError, setServerError] = useState(null);
+  const [succes, setsucces] = useState(false);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    resolver: yupResolver(resetPasswordSchema), mode: "onBlur"
+  })
 
-const onSubmit = async (data) => {
+  const onSubmit = async (data) => {
     setServerError(null);
 
     try {
-        const email = sessionStorage.getItem("resetEmail");
+      const email = sessionStorage.getItem("resetEmail");
 
-        if (!email) {
-            navigate("/send-code");
-            return;
+      if (!email) {
+        navigate("/send-code");
+        return;
+      }
+
+      await axios.patch(
+        "https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword",
+        {
+          email: email,
+          code: data.code,
+          newPassword: data.newPassword
         }
+      );
 
-        await axios.patch(
-            "https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword",
-            {
-                email: email,
-                code: data.code,
-                newPassword: data.newPassword
-            }
-        );
-
-        sessionStorage.removeItem("resetEmail");
-        navigate("/login");
+      sessionStorage.removeItem("resetEmail");
+      navigate("/login");
 
     } catch (err) {
-        console.log(err.response);
-        setServerError("Password Reset Failed");
+      console.log(err.response);
+      setServerError("Password Reset Failed");
     }
-};
+  };
   return (
-    <Box >
-      <Container>
-        <Box>
-          <Typography className="font-Primary">
-            Reset Password
-          </Typography>
-          <Typography className="font-secondery">
-            Create a strong new password for your IndigoStore account.
-          </Typography>
-        </Box>
-        {serverError && (
-          <Alert severity="error" sx={{ mb: 2 }}>
-            {serverError}
-          </Alert>
-        )}
-        <Box
-          component="form"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <TextField
-            label="Enter a 4-digit code"
-            type="text"
-            inputProps={{ maxLength: 4, inputMode: "numeric" }}
-             {...register("code")}
+    <Box
+      sx={{
+        minHeight: "100vh",
+        width: "100%",
+        display: "flex",
+      }}
+    >
+      <Box
+        sx={{
+          width: "50%",
+          minHeight: "100vh",
+          display: { xs: "none", md: "block" },
+        }}
+      >
+        <ResetPasswordSidePanel />
+      </Box>
+      <Box>
+        <Container>
+          <Box>
+            <Typography className="font-Primary">
+              Reset Password
+            </Typography>
+            <Typography className="font-secondery">
+              Create a strong new password for your IndigoStore account.
+            </Typography>
+          </Box>
+          {serverError && (
+            <Alert severity="error" sx={{ mb: 2 }}>
+              {serverError}
+            </Alert>
+          )}
+          <Box
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <TextField
+              label="Enter a 4-digit code"
+              type="text"
+              inputProps={{ maxLength: 4, inputMode: "numeric" }}
+              {...register("code")}
               error={!!errors.code}
               helperText={errors.code?.message}
-          />
+            />
 
-          <TextField
-            label="New Password"
-            type="password"
-            fullWidth
-            {...register("newPassword")}
+            <TextField
+              label="New Password"
+              type="password"
+              fullWidth
+              {...register("newPassword")}
               error={!!errors.newPassword}
               helperText={errors.newPassword?.message}
-          />
-          <TextField
-            label="Confirm new Password"
-            type="password"
-            fullWidth
-            {...register("confirmPassword")}
+            />
+            <TextField
+              label="Confirm new Password"
+              type="password"
+              fullWidth
+              {...register("confirmPassword")}
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
-          />
-           <CustomButton
-                        type="submit"
-                        fullWidth
-                        sx={{
-                            height: 50,
-                            gap: 1,
-                            mt: 5,
-                        }}
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? "Resetting..." : "Reset Password"}
-                    </CustomButton>
-        </Box>
-      </Container>
-
+            />
+            <CustomButton
+              type="submit"
+              fullWidth
+              sx={{
+                height: 50,
+                gap: 1,
+                mt: 5,
+              }}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Resetting..." : "Reset Password"}
+            </CustomButton>
+          </Box>
+        </Container>
+      </Box>
     </Box>
 
   );
