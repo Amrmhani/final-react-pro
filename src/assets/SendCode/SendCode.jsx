@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CustomButton from '../../components/UI/Button/Button';
 import axios from 'axios';
+import SendCodeSidePanel from '../../SendCodeSidePanel/SendCodeSidePanel';
 
 
 
@@ -34,7 +35,22 @@ export default function SendCode() {
     }
 
     return (
-        <Box>
+        <Box 
+        sx={{
+            minHeight: "100vh",
+            width: "100%",
+            display: "flex",
+        }}
+        >
+            <Box
+            sx={{
+                width: "50%",
+                minHeight: "100vh",
+                display: { xs: "none", md: "block" },
+            }}
+        >
+            <SendCodeSidePanel />
+        </Box>
             <Container
                 maxWidth={false}
                 sx={{
