@@ -13,7 +13,6 @@ import ResetPasswordSidePanel from "../../components/ResetPasswordSidePanel/Rese
 export default function ResetPassword() {
   const navigate = useNavigate();
   const [serverError, setServerError] = useState(null);
-  const [succes, setsucces] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(resetPasswordSchema), mode: "onBlur"
   })
@@ -130,46 +129,60 @@ export default function ResetPassword() {
               {serverError}
             </Alert>
           )}
+
           <Box
             component="form"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <TextField
-              label="Enter a 4-digit code"
-              type="text"
-              slotProps={{
-                htmlInput: {
-                  maxLength: 4,
-                  inputMode: "numeric",
-                },
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 1,
+                mb: 2,
               }}
-              sx={{ mb: 2 }}
-              {...register("code")}
-              error={!!errors.code}
-              helperText={errors.code?.message}
-            />
-            <Box sx={{ mb: 2 }}>
+            >
+              <TextField
+                label="Enter a 4-digit code"
+                type="text"
+                fullWidth
+                slotProps={{
+                  htmlInput: {
+                    maxLength: 4,
+                    inputMode: "numeric",
+                  },
+                }}
+                {...register("code")}
+                error={!!errors.code}
+                helperText={errors.code?.message}
+              />
+
               <Button
                 type="button"
                 onClick={handleResendCode}
                 disabled={resendLoading}
-                sx={{ textTransform: "none" }}
+                sx={{
+                  whiteSpace: "nowrap",
+                  height: 56,
+                  textTransform: "none",
+                }}
               >
                 {resendLoading ? "Sending..." : "Resend Code"}
               </Button>
-
-              {resendMessage && (
-                <Alert severity="success" sx={{ mt: 1 }}>
-                  {resendMessage}
-                </Alert>
-              )}
-
-              {resendError && (
-                <Alert severity="error" sx={{ mt: 1 }}>
-                  {resendError}
-                </Alert>
-              )}
             </Box>
+
+            {resendMessage && (
+              <Alert severity="success" sx={{ mb: 2 }}>
+                {resendMessage}
+              </Alert>
+            )}
+
+            {resendError && (
+              <Alert severity="error" sx={{ mb: 2 }}>
+                {resendError}
+              </Alert>
+            )}
+
             <TextField
               label="New Password"
               type="password"
@@ -179,6 +192,7 @@ export default function ResetPassword() {
               error={!!errors.newPassword}
               helperText={errors.newPassword?.message}
             />
+
             <TextField
               label="Confirm new Password"
               type="password"
@@ -187,6 +201,7 @@ export default function ResetPassword() {
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword?.message}
             />
+
             <CustomButton
               type="submit"
               fullWidth
@@ -199,8 +214,8 @@ export default function ResetPassword() {
             >
               {isSubmitting ? "Resetting..." : "Reset Password"}
             </CustomButton>
-
           </Box>
+
         </Container>
       </Box>
     </Box>
