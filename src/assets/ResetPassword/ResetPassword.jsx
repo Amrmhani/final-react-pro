@@ -17,6 +17,7 @@ export default function ResetPassword() {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(resetPasswordSchema), mode: "onBlur"
   })
+ 
 
   const onSubmit = async (data) => {
     setServerError(null);
@@ -45,7 +46,11 @@ export default function ResetPassword() {
       console.log(err.response);
       setServerError("Password Reset Failed");
     }
-  };
+};
+   
+ const [resendLoading, setResendLoading] = useState(false);
+const [resendMessage, setResendMessage] = useState("");
+const [resendError, setResendError] = useState("");
   return (
     <Box
       sx={{
@@ -145,6 +150,7 @@ export default function ResetPassword() {
             >
               {isSubmitting ? "Resetting..." : "Reset Password"}
             </CustomButton>
+           
           </Box>
         </Container>
       </Box>
