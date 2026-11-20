@@ -72,11 +72,17 @@ export default function ResetPassword() {
             label="New Password"
             type="password"
             fullWidth
+            {...register("newPassword")}
+              error={!!errors.newPassword}
+              helperText={errors.newPassword?.message}
           />
           <TextField
             label="Confirm new Password"
             type="password"
             fullWidth
+            {...register("confirmPassword")}
+              error={!!errors.confirmPassword}
+              helperText={errors.confirmPassword?.message}
           />
            <CustomButton
                         type="submit"
