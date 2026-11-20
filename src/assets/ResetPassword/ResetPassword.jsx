@@ -5,37 +5,37 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 
-    const navigate = useNavigate();
+const navigate = useNavigate();
 const [serverError, setServerError] = useState(null);
-    const [succes, setsucces] = useState(false);
- const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
-        resolver: yupResolver(sendCodeSchema), mode: "onBlur"
-    })
+const [succes, setsucces] = useState(false);
+const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+  resolver: yupResolver(sendCodeSchema), mode: "onBlur"
+})
 
-     const onSubmit = async (data) => {
-    console.log(data);
+const onSubmit = async (data) => {
+  console.log(data);
 
-    setServerError(null);
+  setServerError(null);
 
-    try {
-        const email = sessionStorage.getItem("resetEmail");
+  try {
+    const email = sessionStorage.getItem("resetEmail");
 
-        const response = await axios.patch(
-            'https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword',
-            {
-                email: email,
-                code: data.code,
-                newPassword: data.newPassword
-            }
-        );
+    const response = await axios.patch(
+      'https://knowledgeshop.runasp.net/api/auth/Account/ResetPassword',
+      {
+        email: email,
+        code: data.code,
+        newPassword: data.newPassword
+      }
+    );
 
-        sessionStorage.removeItem("resetEmail");
-        navigate('/login');
+    sessionStorage.removeItem("resetEmail");
+    navigate('/login');
 
-    } catch (err) {
-        console.log(err.response);
-        setServerError("Password Reset Failed");
-    }
+  } catch (err) {
+    console.log(err.response);
+    setServerError("Password Reset Failed");
+  }
 };
 export default function ResetPassword() {
   return (
@@ -49,24 +49,29 @@ export default function ResetPassword() {
             Create a strong new password for your IndigoStore account.
           </Typography>
         </Box>
+        {serverError && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {serverError}
+          </Alert>
+        )}
         <Box>
           <TextField
-          label = "Enter a 4-digit code"
-          type="text"
-          inputProps={{ maxLength: 4, inputMode: "numeric" }} 
-          
+            label="Enter a 4-digit code"
+            type="text"
+            inputProps={{ maxLength: 4, inputMode: "numeric" }}
+
           />
-          
+
           <TextField
             label="New Password"
             type="password"
             fullWidth
-             />
-              <TextField
+          />
+          <TextField
             label="Confirm new Password"
             type="password"
             fullWidth
-             />
+          />
 
         </Box>
       </Container>
