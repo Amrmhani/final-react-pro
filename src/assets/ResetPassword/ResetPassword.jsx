@@ -6,7 +6,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { resetPasswordSchema } from '../../validations/authSchemas';
 import axios from "axios";
 
-const navigate = useNavigate();
+
+export default function ResetPassword() {
+  const navigate = useNavigate();
 const [serverError, setServerError] = useState(null);
 const [succes, setsucces] = useState(false);
 const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
@@ -38,7 +40,6 @@ const onSubmit = async (data) => {
     setServerError("Password Reset Failed");
   }
 };
-export default function ResetPassword() {
   return (
     <Box >
       <Container>
