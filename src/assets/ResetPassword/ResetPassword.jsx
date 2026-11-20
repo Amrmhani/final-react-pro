@@ -54,7 +54,10 @@ export default function ResetPassword() {
             {serverError}
           </Alert>
         )}
-        <Box>
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <TextField
             label="Enter a 4-digit code"
             type="text"
