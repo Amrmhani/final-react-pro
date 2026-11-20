@@ -63,13 +63,32 @@ export default function ResetPassword() {
       >
         <ResetPasswordSidePanel />
       </Box>
-      <Box>
-        <Container>
+      <Box
+        sx={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          px: { xs: 2, md: 4 },
+          py: 4,
+        }}
+      >
+        <Container
+          maxWidth={false}
+          sx={{
+            width: "100%",
+            maxWidth: 448,
+            p: 0,
+            m: 0,
+          }}
+
+        >
           <Box>
-            <Typography className="font-Primary">
+            <Typography className="font-Primary"
+            sx={{fontSize:40,mb:1}}>
               Reset Password
             </Typography>
-            <Typography className="font-secondery">
+            <Typography className="font-secondery" sx={{mb:4}}>
               Create a strong new password for your IndigoStore account.
             </Typography>
           </Box>
@@ -85,7 +104,13 @@ export default function ResetPassword() {
             <TextField
               label="Enter a 4-digit code"
               type="text"
-              inputProps={{ maxLength: 4, inputMode: "numeric" }}
+              slotProps={{
+                htmlInput: {
+                  maxLength: 4,
+                  inputMode: "numeric",
+                },
+              }}  
+              sx={{mb:2}}            
               {...register("code")}
               error={!!errors.code}
               helperText={errors.code?.message}
@@ -95,6 +120,7 @@ export default function ResetPassword() {
               label="New Password"
               type="password"
               fullWidth
+              sx={{mb:2}} 
               {...register("newPassword")}
               error={!!errors.newPassword}
               helperText={errors.newPassword?.message}
