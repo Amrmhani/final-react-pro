@@ -7,10 +7,10 @@ import {
     Chip,
 } from "@mui/material";
 
-import registerpicture from "../assets/Pictures/register.png";
-import Logo from "../assets/Icons/Logo.png";
-import ShieldIcon from "../assets/Icons/Login-shield.png";
-import LockIcon from "../assets/Icons/lock-icon.png";
+import registerpicture from "../../assets/Pictures/register.png";
+import Logo from "../../assets/Icons/Logo.png";
+import ShieldIcon from "../../assets/Icons/Login-shield.png";
+import LockIcon from "../../assets/Icons/lock-icon.png";
 
 const SendCodeSidePanel = () => {
     return (
