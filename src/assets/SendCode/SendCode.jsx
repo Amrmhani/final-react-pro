@@ -1,6 +1,6 @@
 import { Alert, Box, Container, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import { Link as RouterLink, useNavigate } from "react-router";
+import  { useState } from 'react'
+import { useNavigate } from "react-router";
 import { sendCodeSchema } from '../../validations/authSchemas';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -21,6 +21,7 @@ export default function SendCode() {
     })
     const onSubmit = async (data) => {
         console.log(data);
+        setServerError(null);
         try {
             const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/SendCode', data)
             setsucces(true);
