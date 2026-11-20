@@ -51,6 +51,34 @@ export default function ResetPassword() {
  const [resendLoading, setResendLoading] = useState(false);
 const [resendMessage, setResendMessage] = useState("");
 const [resendError, setResendError] = useState("");
+
+const handleResendCode = async () => {
+    setResendLoading(true);
+    setResendMessage("");
+    setResendError("");
+
+    try {
+        const email = sessionStorage.getItem("resetEmail");
+
+        if (!email) {
+            navigate("/send-code");
+            return;
+        }
+
+        await axios.post(
+            "https://knowledgeshop.runasp.net/api/auth/Account/SendCode",
+            { email }
+        );
+
+        setResendMessage("A new verification code has been sent to your email.");
+
+    } catch (err) {
+        console.log(err.response);
+        setResendError("Failed to resend verification code.");
+    } finally {
+        setResendLoading(false);
+    }
+};
   return (
     <Box
       sx={{
