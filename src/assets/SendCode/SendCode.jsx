@@ -48,9 +48,19 @@ export default function SendCode() {
                 minHeight: "100vh",
                 display: { xs: "none", md: "block" },
             }}
-        >
+         >
             <SendCodeSidePanel />
-        </Box>
+            </Box>
+            <Box
+            sx={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                px: { xs: 2, md: 4 },
+                py: 4,
+            }}
+            >
             <Container
                 maxWidth={false}
                 sx={{
@@ -101,5 +111,6 @@ export default function SendCode() {
                 </Box>
             </Container>
         </Box>
+    </Box>
     )
 }
