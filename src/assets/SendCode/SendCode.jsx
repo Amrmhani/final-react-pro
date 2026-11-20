@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CustomButton from '../../components/UI/Button/Button';
 import axios from 'axios';
-import SendCodeSidePanel from '../../SendCodeSidePanel/SendCodeSidePanel';
+import SendCodeSidePanel from '../../components/SendCodeSidePanel/SendCodeSidePanel';
 
 
 
