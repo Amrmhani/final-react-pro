@@ -4,6 +4,7 @@ import { Link as RouterLink, useNavigate } from "react-router";
 import { sendCodeSchema } from '../../validations/authSchemas';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import CustomButton from '../../components/UI/Button/Button';
 
 
 
@@ -65,6 +66,18 @@ export default function SendCode() {
                         fullWidth
                         {...register("email")}
                     />
+                    <CustomButton
+                        type="submit"
+                        fullWidth
+                        sx={{
+                            height: 50,
+                            gap: 1,
+                            mt: 5,
+                        }}
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Sending..." : "Send Code"}
+                    </CustomButton>
                 </Box>
             </Container>
         </Box>
