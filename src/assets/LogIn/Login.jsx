@@ -122,7 +122,7 @@ return (
                         }}
                     >
                         <RouterLink
-                            to="/SendCode"
+                            to="/send-code"
                             style={{
                                 color: "#4E45D5",
                                 textDecoration: "none",
