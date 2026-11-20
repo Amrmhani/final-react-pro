@@ -66,6 +66,8 @@ export default function SendCode() {
                         label="Email adress"
                         fullWidth
                         {...register("email")}
+                        error={!!errors.email}
+                        helperText={errors.email?.message}
                     />
                     <CustomButton
                         type="submit"
