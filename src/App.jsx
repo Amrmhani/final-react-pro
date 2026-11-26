@@ -7,9 +7,10 @@ import {
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { getTheme } from './theme';
 
 const queryClient = new QueryClient();
-const theme = getTheme('light');
+const theme = getTheme('dark');
 
 export default function App() {
 
