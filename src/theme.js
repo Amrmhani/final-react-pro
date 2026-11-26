@@ -35,6 +35,11 @@ const lightPalette = {
      export const getTheme = (mode) => {
         return createTheme({
             palette:mode == 'light' ?  lightPalette : darkPallete,
+            typography:{
+                button:{
+                    textTransform:"capitalize"
+                }
+            }
         })
          
 
