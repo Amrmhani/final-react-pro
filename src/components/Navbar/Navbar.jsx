@@ -5,12 +5,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import react, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import SearchIcon from "../../assets/icons/search.png";
 import InputBase from '@mui/material/InputBase';
 import { useAuthstore } from '../../store/useAuthStore';
 import { useThemeStore } from '../../store/themeStore';
-
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 export default function Navbar(){
     const Search = styled('div')(({ theme }) => ({
@@ -56,6 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const token = useAuthstore((state)=>state.token);
 const logout = useAuthstore((state)=>state.logout);
 const toggleMode = useThemeStore((state)=>state.toggleMode);
+const mode = useThemeStore((state) => state.mode);
 
     return(
        <AppBar position="static">
@@ -85,6 +87,13 @@ const toggleMode = useThemeStore((state)=>state.toggleMode);
     inputProps={{ 'aria-label': 'search' }}
   />
 </Search>
+<IconButton
+  onClick={toggleMode}
+  color="inherit"
+  sx={{ ml: 2 }}
+>
+  {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
+</IconButton>
         </Toolbar>
        </AppBar>
     )
