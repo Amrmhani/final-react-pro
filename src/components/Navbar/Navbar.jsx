@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import SearchIcon from "../../assets/icons/search.png";
 import InputBase from '@mui/material/InputBase';
 import { useAuthstore } from '../../store/useAuthStore';
+import { useThemeStore } from '../../store/themeStore';
 
 
 export default function Navbar(){
@@ -54,7 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const token = useAuthstore((state)=>state.token);
 const logout = useAuthstore((state)=>state.logout);
-
+const toggleMode = useThemeStore((state)=>state.toggleMode);
 
     return(
        <AppBar position="static">
