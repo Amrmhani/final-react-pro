@@ -6,21 +6,22 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
-const queryClient = new QueryClient()
-
+const queryClient = new QueryClient();
+const theme = getTheme('light');
 
 export default function App() {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <CssBaseline />
+      <ThemeProvider theme = {theme}>
+        <QueryClientProvider client={queryClient}>
+          <CssBaseline />
           <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </ThemeProvider>
 
     </>
   )
